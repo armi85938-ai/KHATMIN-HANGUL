@@ -1,0 +1,2368 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KHATMIN HANGUL · We learn, and we go to Korea! 🇰🇷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800;900&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --mint:#CFEBE0; --pink:#FFD8E4; --lav:#E4DBF8; --cream:#FFF7E8;
+  --sky:#CDE7F8; --peach:#FFE1C9; --ink:#3F3854; --muted:#8A82A0;
+  --deep:#6B5B95; --white:#FFFDFB;
+  --shadow:0 24px 60px -30px rgba(120,95,175,.8);
+}
+*{box-sizing:border-box;}
+[hidden]{display:none !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Vazirmatn',system-ui,sans-serif;color:var(--ink);
+  background:#FFF9F1;min-height:100vh;overflow-x:hidden;
+  position:relative;line-height:1.8;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:-3;
+  background:
+    radial-gradient(900px 520px at 92% -8%, #FFE3EE 0%, transparent 62%),
+    radial-gradient(820px 520px at -8% 6%, #D9F0E6 0%, transparent 62%),
+    radial-gradient(900px 620px at 50% 112%, #E6DDFA 0%, transparent 62%),
+    linear-gradient(180deg,#FFFBF4 0%,#FDF7FF 100%);
+  animation:aurora 24s ease-in-out infinite;
+}
+@keyframes aurora{0%,100%{filter:hue-rotate(0deg);}50%{filter:hue-rotate(-12deg);}}
+body::after{
+  content:'';position:fixed;inset:0;z-index:-2;
+  background-image:radial-gradient(#C9B8E8 1px, transparent 1px);
+  background-size:26px 26px;opacity:.24;pointer-events:none;
+}
+.floaters{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;}
+.floaters span{
+  position:absolute;font-family:'Noto Sans KR',sans-serif;font-weight:900;
+  color:#B9A9DC;opacity:.13;animation:floaty 18s ease-in-out infinite;user-select:none;
+  text-shadow:0 6px 30px rgba(201,184,232,.5);
+}
+.floaters span:nth-child(1){top:6%;left:4%;font-size:120px;animation-delay:0s;}
+.floaters span:nth-child(2){top:24%;right:6%;font-size:96px;animation-delay:-3s;}
+.floaters span:nth-child(3){top:58%;left:9%;font-size:76px;animation-delay:-6s;}
+.floaters span:nth-child(4){top:74%;right:12%;font-size:128px;animation-delay:-9s;}
+.floaters span:nth-child(5){top:44%;right:38%;font-size:70px;animation-delay:-12s;}
+.floaters span:nth-child(6){top:88%;left:38%;font-size:92px;animation-delay:-5s;}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-28px) rotate(5deg);}}
+
+.topbar{
+  position:sticky;top:0;z-index:60;display:flex;align-items:center;
+  gap:18px;flex-wrap:wrap;padding:14px 24px;
+  background:rgba(255,253,249,.78);backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  border-bottom:1.5px solid rgba(200,185,225,.4);
+  box-shadow:0 8px 30px -20px rgba(120,95,175,.5);
+}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand-mark{
+  width:52px;height:52px;border-radius:18px;display:grid;place-items:center;
+  font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:26px;color:#fff;
+  background:linear-gradient(140deg,#FFB3CE,#B9A9DC 55%,#8FD3C1);
+  box-shadow:0 12px 24px -12px rgba(140,110,200,.95), inset 0 -4px 10px rgba(255,255,255,.4);
+  animation:markFloat 4s ease-in-out infinite;
+}
+@keyframes markFloat{0%,100%{transform:rotate(-4deg) scale(1);}50%{transform:rotate(4deg) scale(1.06);}}
+.brand h1{font-size:18px;margin:0;font-weight:900;letter-spacing:.5px;font-family:'Vazirmatn','Noto Sans KR',sans-serif;}
+.brand p{margin:0;font-size:11.5px;color:var(--muted);font-weight:600;direction:ltr;text-align:right;}
+@media(max-width:720px){.brand p{text-align:left;}}
+.tabs{display:flex;gap:10px;margin-inline-start:auto;flex-wrap:wrap;}
+.tab{
+  position:relative;border:none;cursor:pointer;font-family:inherit;
+  padding:11px 20px 11px 16px;border-radius:999px;
+  font-size:13.5px;font-weight:800;color:var(--muted);
+  background:linear-gradient(135deg,#FFFFFF,#FBF8FF);
+  box-shadow:0 8px 20px -14px rgba(107,91,149,.9), inset 0 0 0 1.5px #F1EBFB;
+  overflow:hidden;transition:all .35s cubic-bezier(.34,1.56,.64,1);
+  display:inline-flex;align-items:center;gap:9px;white-space:nowrap;
+}
+.tab .tab-ico{font-size:1.25em;display:inline-block;transition:transform .5s cubic-bezier(.34,1.56,.64,1);}
+.tab:hover{transform:translateY(-3px);box-shadow:0 16px 30px -18px rgba(107,91,149,1), inset 0 0 0 1.5px #E4DBF8;color:var(--deep);}
+.tab:hover .tab-ico{transform:translateY(-2px) rotate(-14deg) scale(1.25);}
+.tab.active{
+  color:#5B4B86;
+  background:linear-gradient(135deg,#FFD8E4 0%,#E4DBF8 48%,#CFEBE0 100%);
+  box-shadow:0 0 0 3px rgba(255,255,255,.9),0 0 0 5px rgba(201,184,232,.5),0 18px 34px -16px rgba(140,110,200,1);
+  transform:translateY(-2px);
+}
+.tab.active .tab-ico{animation:iconBounce 2.4s ease-in-out infinite;}
+@keyframes iconBounce{0%,100%{transform:translateY(0) scale(1) rotate(0);}35%{transform:translateY(-5px) scale(1.18) rotate(-10deg);}70%{transform:translateY(-2px) scale(1.1) rotate(6deg);}}
+.tab.active::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 25%,rgba(255,255,255,.85) 50%,transparent 75%);
+  animation:shineSweep 2.8s ease-in-out infinite;
+}
+@keyframes shineSweep{0%{transform:translateX(-120%);}55%,100%{transform:translateX(120%);}}
+.tab.active::after{
+  content:'';position:absolute;left:50%;bottom:6px;width:5px;height:5px;
+  border-radius:50%;background:#fff;transform:translateX(-50%);
+  box-shadow:0 0 10px 2px rgba(255,255,255,.9);
+  animation:dotPulse 1.6s ease-in-out infinite;
+}
+@keyframes dotPulse{0%,100%{opacity:.3;transform:translateX(-50%) scale(.8);}50%{opacity:1;transform:translateX(-50%) scale(1.3);}}
+
+main{max-width:1050px;margin:0 auto;padding:26px 20px 60px;}
+.view{animation:viewIn .5s cubic-bezier(.2,.8,.3,1.2) both;}
+@keyframes viewIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+
+.hero{
+  position:relative;overflow:hidden;border-radius:34px;padding:34px 30px 120px;
+  background:radial-gradient(120% 100% at 0% 0%, #FFE9F1 0%, transparent 60%),radial-gradient(120% 100% at 100% 100%, #E6F7EE 0%, transparent 60%),linear-gradient(160deg,#EAF4FF 0%,#F5EEFF 100%);
+  border:1.6px solid #fff;box-shadow:var(--shadow);margin-bottom:22px;
+}
+.hero::before{
+  content:'';position:absolute;inset:-2px;border-radius:34px;padding:2px;
+  background:linear-gradient(135deg,#FFD8E4,#E4DBF8,#CFEBE0,#CDE7F8);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  animation:borderRotate 8s linear infinite;pointer-events:none;
+}
+@keyframes borderRotate{to{filter:hue-rotate(360deg);}}
+.hero-art{position:absolute;bottom:0;left:0;width:100%;height:135px;display:block;}
+.hero-text{position:relative;z-index:2;max-width:580px;}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.9);
+  border:1.4px solid #fff;padding:7px 16px;border-radius:999px;
+  font-size:12px;font-weight:800;color:#9B6FA8;
+  box-shadow:0 8px 18px -14px rgba(140,110,200,1);
+}
+.hero h2{margin:14px 0 6px;font-size:clamp(21px,3.4vw,30px);font-weight:900;letter-spacing:-.6px;}
+.hero p{margin:0;color:#7B7095;font-size:14px;font-weight:500;}
+
+.day-strip{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;margin-bottom:14px;scrollbar-width:thin;}
+.day-strip::-webkit-scrollbar{height:5px;}
+.day-strip::-webkit-scrollbar-thumb{background:#E4DBF8;border-radius:999px;}
+.day-pill{
+  flex:0 0 auto;border:none;cursor:pointer;font-family:inherit;
+  padding:8px 14px;border-radius:999px;font-size:12px;font-weight:800;
+  background:#fff;color:var(--muted);white-space:nowrap;
+  box-shadow:0 6px 16px -14px rgba(107,91,149,.9), inset 0 0 0 1.5px #F1EBFB;
+  transition:all .25s;display:flex;align-items:center;gap:7px;
+}
+.day-pill:hover{transform:translateY(-2px);}
+.day-pill.current{background:linear-gradient(135deg,#FFD8E4,#E4DBF8);color:#5B4B86;box-shadow:0 10px 22px -14px rgba(140,110,200,1);}
+.day-pill.done{background:linear-gradient(135deg,#CFEBE0,#D9F0E6);color:#2F6B5C;}
+.day-pill.hangul{background:linear-gradient(135deg,#FFE9A8,#FFD8E4);color:#A56A28;}
+.day-pill .dp-badge{background:rgba(255,255,255,.75);border-radius:999px;padding:1px 7px;font-size:10.5px;font-weight:900;}
+
+.progress-row{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
+.progress-bar{flex:1;height:14px;border-radius:999px;background:#fff;box-shadow:inset 0 2px 6px rgba(150,130,190,.18);overflow:hidden;border:1.5px solid #fff;}
+.progress-bar > div{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#FFC2D8,#C9B8E8 50%,#9EE0C8);transition:width .7s cubic-bezier(.2,.8,.3,1.2);box-shadow:0 0 12px rgba(201,184,232,.7);}
+#dayProgressLabel{font-size:12.5px;font-weight:800;color:var(--muted);white-space:nowrap;}
+
+.flash-wrap{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:20px;}
+.nav-arrow{
+  width:54px;height:54px;flex:0 0 auto;border-radius:50%;border:2px solid #fff;
+  background:rgba(255,255,255,.9);backdrop-filter:blur(10px);cursor:pointer;font-size:24px;color:var(--deep);line-height:1;
+  box-shadow:0 14px 28px -16px rgba(120,95,175,1);
+  transition:all .22s;display:grid;place-items:center;padding-bottom:5px;
+}
+.nav-arrow:hover{transform:translateY(-3px) scale(1.06);background:linear-gradient(135deg,#FFD8E4,#E4DBF8);}
+.nav-arrow:active{transform:scale(.93);}
+.flash-card{
+  width:min(460px,100%);background:rgba(255,255,255,.82);
+  backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);
+  border-radius:36px;padding:28px 26px 26px;text-align:center;
+  border:1.5px solid rgba(255,255,255,.95);
+  box-shadow:0 34px 70px -34px rgba(120,95,175,.85), 0 0 0 6px rgba(255,255,255,.5);
+  position:relative;animation:cardIn .55s cubic-bezier(.2,.8,.3,1.2);
+}
+@keyframes cardIn{from{opacity:0;transform:translateY(18px) scale(.95);}to{opacity:1;transform:none;}}
+.flash-card::before,.flash-card::after{content:'';position:absolute;width:64px;height:64px;border-radius:20px;opacity:.55;pointer-events:none;}
+.flash-card::before{top:14px;right:14px;background:linear-gradient(135deg,#FFE1C9,transparent);}
+.flash-card::after{bottom:14px;left:14px;background:linear-gradient(135deg,transparent,#CFEBE0);}
+.card-media{
+  width:160px;height:160px;margin:0 auto 16px;border-radius:50%;
+  display:grid;place-items:center;font-size:80px;cursor:pointer;
+  background:radial-gradient(circle at 32% 26%,#FFF4CE,#FFE0EC 46%,#DCEBFB 100%);
+  box-shadow:inset 0 -12px 28px rgba(255,255,255,.95),0 22px 38px -22px rgba(150,120,200,1), 0 0 0 8px rgba(255,255,255,.6);
+  position:relative;transition:transform .35s cubic-bezier(.2,.8,.3,1.4);
+}
+.card-media:hover{transform:scale(1.07) rotate(-3deg);}
+.card-media::after{content:'';position:absolute;inset:-10px;border-radius:50%;border:2.5px dashed #E7DCF8;animation:spinSlow 20s linear infinite;}
+@keyframes spinSlow{to{transform:rotate(360deg);}}
+.card-media.speaking{animation:speakPulse .7s ease infinite;}
+@keyframes speakPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
+.card-cat{display:inline-block;font-size:11.5px;font-weight:800;padding:5px 15px;border-radius:999px;margin-bottom:12px;background:linear-gradient(135deg,#F3EEFB,#FFF0F6);color:#8B6FBF;box-shadow:inset 0 0 0 1px #EFE7FB;}
+.card-ko{
+  font-family:'Noto Sans KR',sans-serif;font-weight:900;
+  font-size:clamp(32px,6.5vw,44px);letter-spacing:-1px;line-height:1.35;
+  background:linear-gradient(135deg,#7C63C6,#C25E93 60%,#4E9E86);
+  -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:4px;
+}
+.card-ro{font-size:13.5px;color:#A79BC4;font-weight:700;letter-spacing:.4px;direction:ltr;margin-bottom:10px;}
+.card-fa{font-size:19px;font-weight:800;color:#5B5178;margin-bottom:20px;line-height:1.6;}
+.card-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+
+.btn{
+  border:none;cursor:pointer;font-family:inherit;font-weight:800;
+  padding:12px 22px;border-radius:999px;font-size:13.5px;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:all .22s cubic-bezier(.2,.8,.3,1.2);
+}
+.btn:hover{transform:translateY(-2px);}
+.btn:active{transform:scale(.95);}
+.btn-mint{background:linear-gradient(135deg,#CFEBE0,#BFE3F7);color:#2F6B5C;box-shadow:0 12px 24px -16px #4E9E86;}
+.btn-pink{background:linear-gradient(135deg,#FFD8E4,#F2D4F7);color:#9B4A72;box-shadow:0 12px 24px -16px #C25E93;}
+.btn-gold{background:linear-gradient(135deg,#FFE9A8,#FFD8E4);color:#A56A28;box-shadow:0 14px 30px -14px #E0A63A;animation:goldGlow 2s ease-in-out infinite;}
+@keyframes goldGlow{0%,100%{box-shadow:0 14px 30px -14px #E0A63A;}50%{box-shadow:0 18px 38px -12px #F5C96B;}}
+.btn-ghost{background:#fff;color:var(--deep);box-shadow:inset 0 0 0 1.8px #EFE7FB;}
+
+.panel-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px;}
+.panel-head h2{margin:0;font-size:22px;font-weight:900;letter-spacing:-.5px;}
+.pill{background:#fff;padding:6px 16px;border-radius:999px;font-size:12.5px;font-weight:800;color:#8B6FBF;box-shadow:0 8px 18px -16px rgba(120,95,175,1);}
+.search-box{margin-inline-start:auto;display:flex;align-items:center;gap:8px;background:#fff;border-radius:999px;padding:8px 16px;box-shadow:inset 0 0 0 1.6px #F1EBFB;}
+.search-box input{border:none;outline:none;background:transparent;font-family:inherit;font-size:13px;width:150px;color:var(--ink);}
+.saved-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px;}
+.saved-item{
+  background:rgba(255,255,255,.9);backdrop-filter:blur(10px);
+  border-radius:26px;padding:18px 14px 14px;text-align:center;position:relative;
+  border:2px solid #fff;box-shadow:0 18px 34px -26px rgba(120,95,175,1);
+  animation:cardIn .4s cubic-bezier(.2,.8,.3,1.2) both;transition:transform .25s;
+}
+.saved-item:hover{transform:translateY(-5px);}
+.saved-emoji{width:74px;height:74px;margin:0 auto 10px;border-radius:50%;display:grid;place-items:center;font-size:36px;background:radial-gradient(circle at 32% 26%,#FFF4CE,#FFE0EC 46%,#DCEBFB 100%);}
+.saved-ko{font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:24px;color:#5B4B86;direction:ltr;line-height:1.4;}
+.saved-ro{font-size:11.5px;color:#A79BC4;font-weight:700;direction:ltr;margin-bottom:4px;}
+.saved-fa{font-size:13.5px;font-weight:800;color:#7A6E96;line-height:1.5;}
+.saved-tools{display:flex;gap:6px;justify-content:center;margin-top:10px;}
+.mini-btn{border:none;cursor:pointer;width:34px;height:34px;border-radius:50%;background:#F5F0FD;font-size:15px;display:grid;place-items:center;transition:all .2s;}
+.mini-btn:hover{background:#E4DBF8;transform:scale(1.12);}
+.mini-btn.del:hover{background:#FFD8E4;}
+.empty{text-align:center;padding:60px 20px;border-radius:32px;background:rgba(255,255,255,.7);border:2px dashed #E1D6F5;backdrop-filter:blur(8px);}
+.empty .big{font-size:56px;display:block;margin-bottom:12px;}
+.empty p{margin:0;color:var(--muted);font-weight:700;font-size:14px;}
+
+.chat-panel{background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-radius:34px;overflow:hidden;border:2px solid #fff;box-shadow:var(--shadow);display:flex;flex-direction:column;height:min(700px,82vh);}
+.chat-head{display:flex;align-items:center;gap:12px;padding:16px 20px;background:linear-gradient(135deg,#FFE9F1,#EAF4FF 60%,#E6F7EE);border-bottom:1.5px solid rgba(200,185,225,.4);position:relative;}
+.chat-head .avatar{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;font-size:26px;background:linear-gradient(135deg,#E4DBF8,#FFD8E4);box-shadow:0 10px 20px -14px rgba(120,95,175,1);animation:bob 3s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg);}50%{transform:translateY(-6px) rotate(3deg);}}
+.chat-head h3{margin:0;font-size:16px;font-weight:900;letter-spacing:-.3px;}
+.chat-head p{margin:0;font-size:11.5px;color:#8B7FA8;font-weight:600;}
+.online-dot{width:11px;height:11px;border-radius:50%;background:#7FD8B0;box-shadow:0 0 0 4px rgba(127,216,176,.28);margin-inline-start:auto;animation:pulseDot 2s infinite;}
+@keyframes pulseDot{0%,100%{box-shadow:0 0 0 4px rgba(127,216,176,.28);}50%{box-shadow:0 0 0 9px rgba(127,216,176,0);}}
+.chat-body{flex:1;overflow-y:auto;padding:20px;background:linear-gradient(180deg,#FFFDFB,#FBF8FF);display:flex;flex-direction:column;gap:14px;scroll-behavior:smooth;}
+.chat-body::-webkit-scrollbar{width:7px;}
+.chat-body::-webkit-scrollbar-thumb{background:#E4DBF8;border-radius:999px;}
+.msg{display:flex;gap:9px;align-items:flex-end;animation:msgIn .35s cubic-bezier(.2,.8,.3,1.2) both;}
+@keyframes msgIn{from{opacity:0;transform:translateY(10px) scale(.97);}to{opacity:1;transform:none;}}
+.msg.me{flex-direction:row-reverse;}
+.msg .m-avatar{width:34px;height:34px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;font-size:17px;background:#F3EEFB;}
+.msg.me .m-avatar{background:#E7F4FF;}
+.bubble{max-width:80%;padding:12px 17px;border-radius:22px;font-size:14px;font-weight:600;}
+.msg.ai .bubble{background:#fff;border-bottom-right-radius:7px;box-shadow:0 14px 26px -22px rgba(120,95,175,1);border:1.5px solid #F1EBFB;}
+.msg.me .bubble{background:linear-gradient(135deg,#D8EEFF,#E9E0FA);border-bottom-left-radius:7px;color:#4B4270;}
+.bubble .ko{font-family:'Noto Sans KR',sans-serif;font-weight:700;direction:ltr;text-align:left;font-size:15.5px;line-height:1.8;color:#4A3F72;white-space:pre-wrap;}
+.bubble .fa{margin-top:8px;padding-top:8px;font-size:13px;font-weight:600;color:#8A7BA8;border-top:1px dashed #E9E0FA;line-height:1.9;white-space:pre-wrap;}
+.bubble .fa:empty{display:none;}
+.bubble .tip{margin-top:8px;padding:8px 12px;background:linear-gradient(135deg,#FFF7E8,#FFE9F1);border-radius:12px;font-size:12px;font-weight:700;color:#A56A28;line-height:1.7;border:1px solid #FFE9C4;}
+.bubble .speak-inline{border:none;background:#F5F0FD;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:12px;margin-top:8px;transition:transform .2s;}
+.bubble .speak-inline:hover{transform:scale(1.15);background:#E4DBF8;}
+.typing{display:flex;gap:5px;padding:6px 4px;}
+.typing i{width:8px;height:8px;border-radius:50%;background:#C9B8E8;animation:tp 1.2s infinite;}
+.typing i:nth-child(2){animation-delay:.2s;}
+.typing i:nth-child(3){animation-delay:.4s;}
+@keyframes tp{0%,60%,100%{transform:translateY(0);opacity:.45;}30%{transform:translateY(-6px);opacity:1;}}
+.chat-suggest{display:flex;gap:8px;padding:10px 16px;overflow-x:auto;background:#fff;border-top:1.5px solid #F3EEFB;}
+.chat-suggest::-webkit-scrollbar{height:0;}
+.chip{border:1.5px solid #E9E0FA;background:#FBF8FF;border-radius:999px;padding:7px 15px;font-size:12.5px;font-weight:700;color:#8B6FBF;cursor:pointer;white-space:nowrap;font-family:'Noto Sans KR','Vazirmatn',sans-serif;transition:all .2s;}
+.chip:hover{background:#E4DBF8;border-color:#D6C8F0;transform:translateY(-2px);}
+.chat-input{display:flex;gap:9px;padding:13px 16px;background:#fff;border-top:1.5px solid #F3EEFB;align-items:center;}
+.chat-input input{flex:1;border:1.8px solid #EFE7FB;border-radius:999px;padding:12px 18px;font-family:'Vazirmatn','Noto Sans KR',sans-serif;font-size:14px;outline:none;background:#FCFAFF;color:var(--ink);transition:border-color .2s,box-shadow .2s;min-width:0;}
+.chat-input input:focus{border-color:#C9B8E8;box-shadow:0 0 0 4px rgba(201,184,232,.22);}
+.icon-btn{width:46px;height:46px;flex:0 0 auto;border-radius:50%;border:none;cursor:pointer;font-size:19px;background:#F5F0FD;transition:all .2s;display:grid;place-items:center;}
+.icon-btn:hover{background:#E4DBF8;transform:scale(1.07);}
+.icon-btn.rec{background:linear-gradient(135deg,#FFC2D8,#F2D4F7);animation:recPulse 1.2s infinite;}
+@keyframes recPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,194,216,.7);}50%{box-shadow:0 0 0 10px rgba(255,194,216,0);}}
+.send-btn{border:none;cursor:pointer;font-family:inherit;font-weight:800;font-size:13.5px;padding:12px 24px;border-radius:999px;color:#fff;flex:0 0 auto;background:linear-gradient(135deg,#B9A9DC,#8FD3C1);box-shadow:0 12px 24px -16px #6B5B95;transition:all .2s;}
+.send-btn:hover{transform:translateY(-2px);}
+.send-btn:active{transform:scale(.95);}
+
+.nb-overlay{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:rgba(70,63,92,.45);backdrop-filter:blur(8px);padding:20px;animation:fadeIn .25s ease;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.nb{width:min(540px,100%);max-height:94vh;overflow-y:auto;border-radius:28px;background:linear-gradient(160deg,#FFFBEE,#FFF4E6);box-shadow:0 40px 80px -30px rgba(70,50,120,.85), 0 0 0 3px #fff;animation:nbIn .45s cubic-bezier(.34,1.56,.64,1) both;position:relative;border:3px solid #fff;}
+@keyframes nbIn{from{opacity:0;transform:translateY(30px) scale(.92) rotate(-2deg);}to{opacity:1;transform:none;}}
+.nb-head{display:flex;align-items:center;gap:10px;padding:16px 22px;background:linear-gradient(135deg,#FFD8E4,#E4DBF8 60%,#CFEBE0);color:#5B4B86;font-weight:900;font-size:14.5px;position:sticky;top:0;z-index:3;}
+.nb-head .nb-close{margin-inline-start:auto;border:none;background:rgba(255,255,255,.6);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;transition:all .2s;}
+.nb-head .nb-close:hover{background:#fff;transform:rotate(90deg);}
+.nb-body{padding:20px 22px 24px;background-image:repeating-linear-gradient(to bottom, transparent 0 31px, rgba(200,185,225,.3) 31px 32px);background-position:0 12px;}
+.nb-prompt{font-size:13.5px;font-weight:800;color:#8A7BA8;margin:0 0 14px;}
+.nb-word{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 0 18px;}
+.nb-emoji{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;font-size:50px;background:radial-gradient(circle at 32% 26%,#FFF4CE,#FFE0EC 46%,#DCEBFB 100%);box-shadow:inset 0 -8px 18px rgba(255,255,255,.9),0 14px 24px -16px rgba(150,120,200,1);}
+.nb-fa{font-size:22px;font-weight:900;color:#5B5178;}
+.nb-cat{font-size:11.5px;font-weight:800;color:#A79BC4;background:#fff;padding:3px 12px;border-radius:999px;}
+.nb-input-wrap{position:relative;margin-bottom:8px;}
+.nb-input{width:100%;border:2px solid #E9DFF8;border-radius:16px;padding:15px 18px;font-family:'Noto Sans KR','Vazirmatn',sans-serif;font-size:22px;font-weight:900;outline:none;background:#fff;color:#5B4B86;text-align:center;direction:ltr;transition:all .2s;letter-spacing:1px;}
+.nb-input:focus{border-color:#C9B8E8;box-shadow:0 0 0 5px rgba(201,184,232,.25);}
+.nb-input.shake{animation:shakeX .45s;}
+@keyframes shakeX{0%,100%{transform:translateX(0);}20%,60%{transform:translateX(-9px);}40%,80%{transform:translateX(9px);}}
+.nb-input.ok{border-color:#7FD8B0;background:#F1FCF7;box-shadow:0 0 0 5px rgba(127,216,176,.25);}
+.nb-msg{text-align:center;font-size:12.5px;font-weight:800;min-height:20px;margin-bottom:12px;color:#D9536F;}
+.nb-msg.ok{color:#2F9E75;}
+.nb-actions{display:flex;gap:10px;justify-content:center;margin-bottom:14px;flex-wrap:wrap;}
+.nb-kb-toggle{text-align:center;font-size:12.5px;font-weight:800;color:#8B6FBF;cursor:pointer;user-select:none;padding:6px;border-radius:999px;transition:background .2s;}
+.nb-kb-toggle:hover{background:rgba(228,219,248,.5);}
+.nb-kb{background:#fff;border-radius:18px;padding:12px;margin-top:8px;box-shadow:inset 0 0 0 1.6px #F1EBFB;display:flex;flex-direction:column;gap:7px;animation:nbIn .3s ease both;}
+.kb-row{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;}
+.kb-row button{border:none;background:#F7F2FE;border-radius:10px;min-width:34px;height:38px;font-family:'Noto Sans KR',sans-serif;font-size:15px;font-weight:700;color:#5B4B86;cursor:pointer;transition:all .15s;padding:0 6px;}
+.kb-row button:hover{background:#E4DBF8;transform:translateY(-2px);}
+.kb-row button:active{transform:scale(.9);background:#D6C8F0;}
+.kb-row.kb-special button{background:linear-gradient(135deg,#FFD8E4,#E4DBF8);min-width:56px;font-family:'Vazirmatn';font-size:12.5px;}
+.kb-label{font-size:10px;font-weight:800;color:#B0A5C9;text-align:center;margin-top:2px;font-family:'Vazirmatn';}
+
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:linear-gradient(135deg,#5B4B86,#7C63C6);color:#fff;padding:14px 26px;border-radius:999px;font-weight:800;font-size:13.5px;box-shadow:0 20px 40px -18px rgba(70,50,120,.9);z-index:300;opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.34,1.56,.64,1);max-width:90vw;text-align:center;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast.err{background:linear-gradient(135deg,#C25E93,#D9536F);}
+
+.confetti{position:fixed;top:-20px;z-index:999;animation:confettiFall 2.8s cubic-bezier(.2,.6,.4,1) forwards;pointer-events:none;will-change:transform,opacity;}
+@keyframes confettiFall{to{transform:translateY(110vh) rotate(900deg);opacity:0;}}
+
+.site-footer{text-align:center;padding:36px 20px 44px;border-top:1.5px dashed #E7DCF8;margin-top:20px;}
+.site-footer .gate{width:min(280px,72vw);height:auto;display:block;margin:0 auto 14px;opacity:.9;}
+.site-footer p{margin:0;font-size:12.5px;color:#A79BC4;font-weight:700;}
+.site-footer .hangul{font-family:'Noto Sans KR',sans-serif;font-weight:900;color:#C9B8E8;font-size:13px;letter-spacing:3px;}
+.site-footer .tagline{font-size:14px;font-weight:800;color:#8B6FBF;margin-top:6px;direction:ltr;}
+
+@media(max-width:720px){
+  .topbar{padding:10px 12px;gap:8px;}
+  .brand-mark{width:44px;height:44px;font-size:22px;border-radius:15px;}
+  .brand h1{font-size:15px;}
+  .brand p{font-size:10px;}
+  .tabs{width:100%;margin-inline-start:0;gap:6px;}
+  .tab{flex:1;padding:9px 8px;font-size:11px;justify-content:center;gap:5px;}
+  .tab .tab-ico{font-size:1.1em;}
+  main{padding:18px 13px 44px;}
+  .hero{padding:26px 20px 100px;border-radius:28px;}
+  .flash-wrap{gap:6px;}
+  .nav-arrow{width:42px;height:42px;font-size:20px;}
+  .flash-card{padding:20px 16px;border-radius:30px;}
+  .card-media{width:128px;height:128px;font-size:62px;}
+  .saved-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;}
+  .chat-panel{height:calc(100vh - 190px);min-height:460px;border-radius:26px;}
+  .bubble{max-width:84%;font-size:13px;}
+  .send-btn{padding:12px 16px;}
+  .search-box input{width:90px;}
+  .nb-body{padding:16px 16px 20px;}
+  .nb-input{font-size:19px;padding:13px;}
+  .msg .m-avatar{width:30px;height:30px;font-size:15px;}
+}
+</style>
+</head>
+<body>
+
+<div class="floaters" aria-hidden="true">
+  <span>한</span><span>글</span><span>사</span><span>랑</span><span>꽃</span><span>별</span>
+</div>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">한</div>
+    <div>
+      <h1>KHATMIN HANGUL</h1>
+      <p>We learn, and we go to Korea! 🇰🇷</p>
+    </div>
+  </div>
+  <nav class="tabs">
+    <button class="tab active" data-view="cards"><span class="tab-ico">🃏</span><span>فلش‌کارت</span></button>
+    <button class="tab" data-view="saved"><span class="tab-ico">💾</span><span>کلمات من</span></button>
+    <button class="tab" data-view="chat"><span class="tab-ico">🦊</span><span>Khatmin</span></button>
+  </nav>
+</header>
+
+<main>
+  <section id="view-cards" class="view">
+    <div class="hero">
+      <svg class="hero-art" viewBox="0 0 800 220" preserveAspectRatio="none" aria-hidden="true">
+        <circle cx="652" cy="58" r="34" fill="#FFD3A5" opacity=".85"/>
+        <path d="M0,220 L120,118 L200,180 L300,88 L400,168 L482,118 L562,190 L662,128 L800,220 Z" fill="#CFEBE0" opacity=".9"/>
+        <path d="M0,220 L100,158 L212,208 L342,148 L462,214 L580,164 L700,214 L800,178 L800,220 Z" fill="#BFE3F7" opacity=".72"/>
+        <g fill="#B9A9DC" opacity=".95">
+          <rect x="612" y="118" width="8" height="72" rx="3"/>
+          <rect x="603" y="98" width="26" height="24" rx="7"/>
+          <rect x="608" y="84" width="16" height="14" rx="4"/>
+        </g>
+        <circle cx="616" cy="76" r="4" fill="#FFD3A5"/>
+      </svg>
+      <div class="hero-text">
+        <span class="badge" id="heroBadge">📚 한글 자모 · الفبای کره‌ای</span>
+        <h2 id="heroTitle">روز ۱ · حروف الفبای کره‌ای</h2>
+        <p id="heroSub">هر روز ۲۰ کارت تازه — روی بلندگو بزن و گوش کن!</p>
+      </div>
+    </div>
+
+    <div class="day-strip" id="dayStrip"></div>
+
+    <div class="progress-row">
+      <div class="progress-bar"><div id="dayProgress"></div></div>
+      <span id="dayProgressLabel">۰ / ۲۰</span>
+    </div>
+
+    <div class="flash-wrap" id="flashWrap">
+      <button class="nav-arrow" id="prevCard" aria-label="قبلی">‹</button>
+      <div class="flash-card" id="flashCard">
+        <div class="card-media" id="cardMedia"><span id="cardEmoji">👋</span></div>
+        <div class="card-cat" id="cardCat">احوال‌پرسی</div>
+        <div class="card-ko" id="cardKo" dir="ltr">안녕하세요</div>
+        <div class="card-ro" id="cardRo">annyeonghaseyo</div>
+        <div class="card-fa" id="cardFa">سلام</div>
+        <div class="card-btns">
+          <button class="btn btn-mint" id="speakBtn">🔊 تلفظ</button>
+          <button class="btn btn-pink" id="saveBtn">✏️ یاد گرفتم</button>
+        </div>
+      </div>
+      <button class="nav-arrow" id="nextCard" aria-label="بعدی">›</button>
+    </div>
+
+    <div id="deckDone" class="empty" hidden>
+      <span class="big">🎉</span>
+      <p>همه‌ی کارت‌های این مرحله رو یاد گرفتی!</p>
+      <p style="margin-top:8px;font-size:12.5px;">با دکمه‌ی زیر برو روز بعد.</p>
+    </div>
+
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
+      <button class="btn btn-gold" id="nextDayBtn" hidden>🚀 ورود به روز بعد</button>
+      <button class="btn btn-ghost" id="resetBtn" title="ریست کامل">♻️ شروع از نو</button>
+    </div>
+  </section>
+
+  <section id="view-saved" class="view" hidden>
+    <div class="panel-head">
+      <h2>💾 کلمات یادگرفته‌ی من</h2>
+      <span class="pill" id="savedCount">۰ کلمه</span>
+      <div class="search-box">
+        <span>🔍</span>
+        <input id="searchInput" placeholder="جستجو…">
+      </div>
+    </div>
+    <div id="savedGrid" class="saved-grid"></div>
+    <div id="savedEmpty" class="empty" hidden>
+      <span class="big">🌷</span>
+      <p>هنوز هیچ کلمه‌ای یاد نگرفتی!</p>
+      <p style="margin-top:6px;font-size:12.5px;">برو به فلش‌کارت‌ها، روی «✏️ یاد گرفتم» بزن و کلمه رو توی دفترچه بنویس.</p>
+    </div>
+  </section>
+
+  <section id="view-chat" class="view" hidden>
+    <div class="chat-panel">
+      <div class="chat-head">
+        <div class="avatar">🦊</div>
+        <div>
+          <h3>Khatmin</h3>
+          <p>معلم کره‌ای تو · فارسی و کره‌ای</p>
+        </div>
+        <span class="online-dot"></span>
+      </div>
+      <div class="chat-body" id="chatBody"></div>
+      <div class="chat-suggest" id="chatSuggest"></div>
+      <form class="chat-input" id="chatForm">
+        <button type="button" class="icon-btn" id="micBtn" title="ضبط صدا">🎤</button>
+        <input id="chatText" placeholder="کره‌ای یا فارسی بنویس…" autocomplete="off">
+        <button type="submit" class="send-btn">ارسال</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<div class="nb-overlay" id="nbOverlay" hidden>
+  <div class="nb">
+    <div class="nb-head">
+      <span>📓 دفترچه یادداشت · Khatmin</span>
+      <button class="nb-close" id="nbClose">✕</button>
+    </div>
+    <div class="nb-body">
+      <p class="nb-prompt" id="nbPrompt">این کلمه رو به کره‌ای بنویس تا «یاد گرفتم» ثبت بشه:</p>
+      <div class="nb-word">
+        <div class="nb-emoji" id="nbEmoji">👋</div>
+        <div class="nb-fa" id="nbFa">سلام</div>
+        <div class="nb-cat" id="nbCat">احوال‌پرسی</div>
+      </div>
+      <div class="nb-input-wrap">
+        <input class="nb-input" id="nbInput" dir="ltr" placeholder="한글로…" autocomplete="off">
+      </div>
+      <div class="nb-msg" id="nbMsg"></div>
+      <div class="nb-actions">
+        <button class="btn btn-ghost" id="nbHint">💡 راهنما</button>
+        <button class="btn btn-pink" id="nbCancel">انصراف</button>
+        <button class="btn btn-mint" id="nbSubmit">✓ تایید</button>
+      </div>
+      <div class="nb-kb-toggle" id="nbKbToggle">⌨️ نمایش کیبورد کره‌ای</div>
+      <div class="nb-kb" id="nbKb" hidden>
+        <div class="kb-label">حروف بی‌صدا</div>
+        <div class="kb-row" id="kbCho"></div>
+        <div class="kb-label">حروف صدادار</div>
+        <div class="kb-row" id="kbJung"></div>
+        <div class="kb-row kb-special">
+          <button data-kb="space">فاصله</button>
+          <button data-kb="back">⌫ پاک</button>
+          <button data-kb="enter">✓ تایید</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer class="site-footer">
+  <svg class="gate" viewBox="0 0 320 112" aria-hidden="true">
+    <path d="M14 46 Q160 6 306 46 L288 62 Q160 30 32 62 Z" fill="#C7B6E8"/>
+    <rect x="44" y="62" width="232" height="8" rx="4" fill="#B7A4DC"/>
+    <rect x="54" y="70" width="212" height="30" fill="#EDE6FA"/>
+    <rect x="88" y="74" width="30" height="26" rx="5" fill="#C7B6E8"/>
+    <rect x="145" y="74" width="30" height="26" rx="5" fill="#C7B6E8"/>
+    <rect x="202" y="74" width="30" height="26" rx="5" fill="#C7B6E8"/>
+    <rect x="36" y="100" width="248" height="9" rx="4.5" fill="#B7A4DC"/>
+    <circle cx="160" cy="20" r="6" fill="#FFD3A5"/>
+  </svg>
+  <p class="hangul">KHATMIN HANGUL · 화이팅!</p>
+  <p class="tagline">We learn, and we go to Korea! 🇰🇷</p>
+</footer>
+
+<script>
+/* =========================================================
+   ۱) ابزارها
+   ========================================================= */
+const $  = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+const faNum = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+const normalize = s => (s || '').replace(/\s+/g, '').trim();
+const hasHangul = t => /[\uAC00-\uD7A3]/.test(t || '');
+
+const CHO_LIST = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+const JUNG_LIST = ['ㅏ','ㅐ','ㅑ','ㅒ','ㅓ','ㅔ','ㅕ','ㅖ','ㅗ','ㅘ','ㅙ','ㅚ','ㅛ','ㅜ','ㅝ','ㅞ','ㅟ','ㅠ','ㅡ','ㅢ','ㅣ'];
+const JONG_LIST = ['','ㄱ','ㄲ','ㄳ','ㄴ','ㄵ','ㄶ','ㄷ','ㄹ','ㄺ','ㄻ','ㄼ','ㄽ','ㄾ','ㄿ','ㅀ','ㅁ','ㅂ','ㅄ','ㅅ','ㅆ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+
+function isJamoChar(str){
+  if(!str || str.length !== 1) return false;
+  const c = str.charCodeAt(0);
+  return (c >= 0x3131 && c <= 0x318E) || (c >= 0x1100 && c <= 0x11FF);
+}
+function isVowelJamo(c){ return JUNG_LIST.includes(c); }
+function silentSyllable(v){
+  const j = JUNG_LIST.indexOf(v);
+  if(j < 0) return null;
+  return String.fromCharCode(0xAC00 + (CHO_LIST.indexOf('ㅇ') * 21 + j) * 28);
+}
+
+/* =========================================================
+   ۲) تبدیل هانگول به رومانیزه (برای TTS انگلیسی)
+   ========================================================= */
+function hangulToRomanization(text){
+  if(!text) return '';
+  const cho = ['g','kk','n','d','tt','r','m','b','pp','s','ss','','j','jj','ch','k','t','p','h'];
+  const jung = ['a','ae','ya','yae','eo','e','yeo','ye','o','wa','wae','oe','yo','u','wo','we','wi','yu','eu','ui','i'];
+  const jong = ['','k','k','k','n','n','n','t','l','k','m','p','l','l','l','l','m','p','p','t','t','ng','t','t','k','t','p','h'];
+  const jamoMap = {
+    'ㄱ':'g','ㄲ':'kk','ㄴ':'n','ㄷ':'d','ㄸ':'tt','ㄹ':'r','ㅁ':'m','ㅂ':'b','ㅃ':'pp',
+    'ㅅ':'s','ㅆ':'ss','ㅇ':'','ㅈ':'j','ㅉ':'jj','ㅊ':'ch','ㅋ':'k','ㅌ':'t','ㅍ':'p','ㅎ':'h',
+    'ㅏ':'a','ㅐ':'ae','ㅑ':'ya','ㅒ':'yae','ㅓ':'eo','ㅔ':'e','ㅕ':'yeo','ㅖ':'ye','ㅗ':'o',
+    'ㅘ':'wa','ㅙ':'wae','ㅚ':'oe','ㅛ':'yo','ㅜ':'u','ㅝ':'wo','ㅞ':'we','ㅟ':'wi','ㅠ':'yu',
+    'ㅡ':'eu','ㅢ':'ui','ㅣ':'i'
+  };
+  let out = '';
+  for(const ch of text){
+    const code = ch.charCodeAt(0);
+    if(code >= 0xAC00 && code <= 0xD7A3){
+      const off = code - 0xAC00;
+      const ci = Math.floor(off / 588);
+      const vi = Math.floor((off % 588) / 28);
+      const fi = off % 28;
+      out += cho[ci] + jung[vi] + jong[fi] + '-';
+    }else if(code >= 0x3131 && code <= 0x318E){
+      const r = jamoMap[ch];
+      if(r !== undefined) out += (r || '') + '-';
+      else out += ch;
+    }else{
+      out += ch;
+    }
+  }
+  return out.replace(/-+$/, '').replace(/--+/g, '-').trim();
+}
+
+/* =========================================================
+   ۳) بانک کلمات — روز ۱: الفبای کره‌ای
+   ========================================================= */
+const DAYS = [
+{t:'حروف الفبای کره‌ای', w:`
+ㄱ|giyeok|گیوک (گ/ک)|🔑
+ㄴ|nieun|نیون (ن)|🍋
+ㄷ|digeut|دیگوت (د/ت)|🚪
+ㄹ|rieul|ریول (ر/ل)|🎢
+ㅁ|mieum|میوم (م)|🌙
+ㅂ|bieup|بیوپ (ب/پ)|🐝
+ㅅ|siot|سیوت (س)|🌟
+ㅇ|ieung|ایونگ (بی‌صدا/نگ)|⭕
+ㅈ|jieut|جیوت (ج/چ)|🍊
+ㅊ|chieut|چیوت (چ)|🍒
+ㅋ|kieuk|کیوک (ک)|☕
+ㅌ|tieut|تیوت (ت)|🐢
+ㅍ|pieup|پیوپ (پ)|🎈
+ㅎ|hieut|هیوت (ه)|💨
+ㅏ|a|آ|🌸
+ㅓ|eo|او (باز)|🌺
+ㅗ|o|او (گرد)|🌼
+ㅜ|u|او (بسته)|🌊
+ㅡ|eu|او (تخت)|➖
+ㅣ|i|ای|📏
+`},
+{t:'سلام و احوال‌پرسی', w:`
+안녕하세요|annyeonghaseyo|سلام|👋
+안녕히 가세요|annyeonghi gaseyo|خداحافظ (به رونده)|👋
+안녕히 계세요|annyeonghi gyeseyo|خداحافظ (به مانده)|🙋
+감사합니다|gamsahamnida|متشکرم|🙏
+고마워요|gomawoyo|ممنون (خودمانی)|😊
+죄송합니다|joesonghamnida|متأسفم|😔
+미안해요|mianhaeyo|ببخشید|🥺
+괜찮아요|gwaenchanayo|خوبم / اشکالی نداره|😌
+네|ne|بله|✅
+아니요|aniyo|نه|❌
+반갑습니다|bangapseumnida|از دیدنت خوشحالم|🤝
+잘 자요|jal jayo|شب بخیر|🌙
+좋은 아침이에요|joeun achimieyo|صبح بخیر|🌅
+또 만나요|tto mannayo|دوباره می‌بینمت|🔁
+잘 먹겠습니다|jal meokgetseumnida|نوش جان (قبل غذا)|🍽️
+잘 먹었습니다|jal meogeotseumnida|ممنون از غذا|😋
+실례합니다|sillyehamnida|ببخشید (جلب توجه)|🙇
+잠시만요|jamsimanyo|یک لحظه|✋
+어서 오세요|eoseo oseyo|خوش آمدید|🎉
+사랑해요|saranghaeyo|دوستت دارم|❤️
+`},
+{t:'اعداد بومی کره‌ای', w:`
+하나|hana|یک|1️⃣
+둘|dul|دو|2️⃣
+셋|set|سه|3️⃣
+넷|net|چهار|4️⃣
+다섯|daseot|پنج|5️⃣
+여섯|yeoseot|شش|6️⃣
+일곱|ilgop|هفت|7️⃣
+여덟|yeodeol|هشت|8️⃣
+아홉|ahop|نه|9️⃣
+열|yeol|ده|🔟
+스물|seumul|بیست|2️⃣0️⃣
+서른|seoreun|سی|3️⃣0️⃣
+마흔|maheun|چهل|4️⃣0️⃣
+쉰|swin|پنجاه|5️⃣0️⃣
+예순|yesun|شصت|6️⃣0️⃣
+일흔|ilheun|هفتاد|7️⃣0️⃣
+여든|yeodeun|هشتاد|8️⃣0️⃣
+아흔|aheun|نود|9️⃣0️⃣
+백|baek|صد|💯
+천|cheon|هزار|🔢
+`},
+{t:'اعداد سینو-کره‌ای', w:`
+일|il|یک|1️⃣
+이|i|دو|2️⃣
+삼|sam|سه|3️⃣
+사|sa|چهار|4️⃣
+오|o|پنج|5️⃣
+육|yuk|شش|6️⃣
+칠|chil|هفت|7️⃣
+팔|pal|هشت|8️⃣
+구|gu|نه|9️⃣
+십|sip|ده|🔟
+이십|isip|بیست|2️⃣0️⃣
+삼십|samsip|سی|3️⃣0️⃣
+사십|sasip|چهل|4️⃣0️⃣
+오십|osip|پنجاه|5️⃣0️⃣
+육십|yuksip|شصت|6️⃣0️⃣
+칠십|chilsip|هفتاد|7️⃣0️⃣
+팔십|palsip|هشتاد|8️⃣0️⃣
+구십|gusip|نود|9️⃣0️⃣
+백|baek|صد|💯
+만|man|ده هزار|🔢
+`},
+{t:'حیوانات', w:`
+고양이|goyangi|گربه|🐱
+강아지|gangaji|توله‌سگ|🐶
+개|gae|سگ|🐕
+새|sae|پرنده|🐦
+물고기|mulgogi|ماهی|🐟
+호랑이|horangi|ببر|🐯
+곰|gom|خرس|🐻
+토끼|tokki|خرگوش|🐰
+말|mal|اسب|🐴
+소|so|گاو|🐮
+돼지|dwaeji|خوک|🐷
+양|yang|گوسفند|🐑
+원숭이|wonsungi|میمون|🐵
+코끼리|kokkiri|فیل|🐘
+사자|saja|شیر|🦁
+개구리|gaeguri|قورباغه|🐸
+뱀|baem|مار|🐍
+나비|nabi|پروانه|🦋
+벌|beol|زنبور|🐝
+거북이|geobugi|لاک‌پشت|🐢
+`},
+{t:'غذاهای کره‌ای', w:`
+김치|kimchi|کیمچی|🥬
+비빔밥|bibimbap|بی‌بیم‌باپ|🍚
+떡볶이|tteokbokki|توکبوکی|🍢
+불고기|bulgogi|بولگوگی|🥩
+라면|ramyeon|رامن|🍜
+삼겹살|samgyeopsal|سامگیوپسال|🥓
+치킨|chikin|مرغ سرخ‌شده|🍗
+냉면|naengmyeon|نودل سرد|🍲
+김밥|gimbap|کیم‌باپ|🍙
+떡|tteok|کیک برنجی|🍡
+밥|bap|برنج|🍚
+국|guk|سوپ|🍲
+물|mul|آب|💧
+우유|uyu|شیر|🥛
+커피|keopi|قهوه|☕
+차|cha|چای|🍵
+빵|ppang|نان|🍞
+사과|sagwa|سیب|🍎
+바나나|banana|موز|🍌
+딸기|ttalgi|توت‌فرنگی|🍓
+`},
+{t:'رنگ‌ها', w:`
+빨간색|ppalgansaek|قرمز|🔴
+파란색|paransaek|آبی|🔵
+노란색|noransaek|زرد|🟡
+초록색|choroksaek|سبز|🟢
+검은색|geomeunsaek|مشکی|⚫
+하얀색|hayansaek|سفید|⚪
+보라색|borasaek|بنفش|🟣
+분홍색|bunhongsaek|صورتی|🌸
+주황색|juhwangsaek|نارنجی|🟠
+갈색|galsaek|قهوه‌ای|🟤
+회색|hoesaek|خاکستری|🩶
+하늘색|haneulsaek|آبی آسمانی|🌤️
+색깔|saekkkal|رنگ|🎨
+밝은|balgeun|روشن|☀️
+어두운|eoduun|تیره|🌑
+예쁜|yeppeun|زیبا|💖
+금색|geumsaek|طلایی|🏅
+은색|eunsaek|نقره‌ای|🥈
+무지개|mujigae|رنگین‌کمان|🌈
+투명한|tumyeonghan|شفاف|🫧
+`},
+{t:'خانواده', w:`
+엄마|eomma|مامان|👩
+아빠|appa|بابا|👨
+어머니|eomeoni|مادر|👩‍🦰
+아버지|abeoji|پدر|👨‍🦱
+언니|eonni|خواهر بزرگ‌تر (دخترانه)|👧
+오빠|oppa|برادر بزرگ‌تر (دخترانه)|👦
+누나|nuna|خواهر بزرگ‌تر (پسرانه)|👩
+형|hyeong|برادر بزرگ‌تر (پسرانه)|🧑
+동생|dongsaeng|خواهر/برادر کوچک‌تر|🧒
+할머니|halmeoni|مادربزرگ|👵
+할아버지|harabeoji|پدربزرگ|👴
+친구|chingu|دوست|🧑‍🤝‍🧑
+가족|gajok|خانواده|👨‍👩‍👧‍👦
+아들|adeul|پسر|👦
+딸|ttal|دختر|👧
+부모님|bumonim|والدین|👫
+남편|nampyeon|شوهر|🤵
+아내|anae|همسر (زن)|👰
+사촌|sachon|پسرخاله/دخترخاله|🧑‍🤝‍🧑
+이모|imo|خاله|👩
+`},
+{t:'اعضای بدن', w:`
+머리|meori|سر|🧠
+눈|nun|چشم|👁️
+코|ko|بینی|👃
+입|ip|دهان|👄
+귀|gwi|گوش|👂
+손|son|دست|✋
+발|bal|پا|🦶
+다리|dari|ساق پا|🦵
+팔|pal|بازو|💪
+얼굴|eolgul|صورت|😊
+이빨|ippal|دندان|🦷
+혀|hyeo|زبان|👅
+목|mok|گردن|🧣
+어깨|eokkae|شانه|🙆
+등|deung|کمر|🧍
+배|bae|شکم|🫃
+심장|simjang|قلب|❤️
+머리카락|meorikarak|مو|💇
+피부|pibu|پوست|🧴
+뼈|ppyeo|استخوان|🦴
+`},
+{t:'مکان‌ها', w:`
+집|jip|خانه|🏠
+학교|hakgyo|مدرسه|🏫
+회사|hoesa|شرکت|🏢
+병원|byeongwon|بیمارستان|🏥
+공원|gongwon|پارک|🌳
+카페|kape|کافه|☕
+식당|sikdang|رستوران|🍴
+은행|eunhaeng|بانک|🏦
+시장|sijang|بازار|🛒
+극장|geukjang|سینما|🎬
+도서관|doseogwan|کتابخانه|📚
+약국|yakguk|داروخانه|💊
+화장실|hwajangsil|دستشویی|🚻
+공항|gonghang|فرودگاه|✈️
+역|yeok|ایستگاه|🚉
+호텔|hotel|هتل|🏨
+가게|gage|مغازه|🏪
+교실|gyosil|کلاس|🏫
+방|bang|اتاق|🛏️
+부엌|bueok|آشپزخانه|🍳
+`},
+{t:'افعال پایه', w:`
+가다|gada|رفتن|🚶
+오다|oda|آمدن|🚶‍♂️
+먹다|meokda|خوردن|🍽️
+마시다|masida|نوشیدن|🥤
+자다|jada|خوابیدن|😴
+일어나다|ireonada|بیدار شدن|🌅
+보다|boda|دیدن|👀
+듣다|deutda|شنیدن|👂
+말하다|malhada|صحبت کردن|🗣️
+읽다|ikda|خواندن|📖
+쓰다|sseuda|نوشتن|✍️
+사다|sada|خریدن|🛍️
+팔다|palda|فروختن|💰
+주다|juda|دادن|🎁
+받다|batda|گرفتن|🤲
+만들다|mandeulda|ساختن|🔨
+놀다|nolda|بازی کردن|🎮
+공부하다|gongbuhada|درس خواندن|📚
+일하다|ilhada|کار کردن|💼
+사랑하다|saranghada|عشق ورزیدن|❤️
+`},
+{t:'صفت‌های پایه', w:`
+좋다|jota|خوب بودن|👍
+나쁘다|nappeuda|بد بودن|👎
+크다|keuda|بزرگ بودن|🐘
+작다|jakda|کوچک بودن|🐜
+많다|manta|زیاد بودن|📈
+적다|jeokda|کم بودن|📉
+높다|nopda|بلند بودن|⬆️
+낮다|natda|پایین بودن|⬇️
+빠르다|ppareuda|سریع بودن|🏃
+느리다|neurida|کند بودن|🐢
+예쁘다|yeppeuda|زیبا بودن|🌸
+못생기다|motsaenggida|زشت بودن|🙈
+쉽다|swipda|آسان بودن|😄
+어렵다|eoryeopda|سخت بودن|😓
+맛있다|masitda|خوشمزه بودن|😋
+재미있다|jaemiitda|سرگرم‌کننده بودن|🎉
+행복하다|haengbokhada|خوشحال بودن|😊
+슬프다|seulpeuda|غمگین بودن|😢
+뜨겁다|tteugeopda|داغ بودن|🔥
+차갑다|chagapda|سرد بودن|🧊
+`},
+{t:'زمان', w:`
+오늘|oneul|امروز|📅
+내일|naeil|فردا|⏭️
+어제|eoje|دیروز|⏮️
+지금|jigeum|حالا|⏰
+아침|achim|صبح|🌅
+점심|jeomsim|ظهر|🌞
+저녁|jeonyeok|عصر / شام|🌆
+밤|bam|شب|🌙
+시|si|ساعت|🕐
+분|bun|دقیقه|⏱️
+초|cho|ثانیه|⏲️
+시간|sigan|زمان|⏰
+날짜|naljja|تاریخ|📆
+요일|yoil|روز هفته|📅
+월요일|woryoil|دوشنبه|📅
+화요일|hwayoil|سه‌شنبه|📅
+수요일|suyoil|چهارشنبه|📅
+목요일|mogyoil|پنجشنبه|📅
+금요일|geumyoil|جمعه|📅
+주말|jumal|آخر هفته|🎉
+`},
+{t:'لباس', w:`
+옷|ot|لباس|👕
+바지|baji|شلوار|👖
+셔츠|syeocheu|پیراهن|👔
+치마|chima|دامن|👗
+원피스|wonpiseu|پیراهن زنانه|👗
+코트|koteu|کت|🧥
+신발|sinbal|کفش|👟
+모자|moja|کلاه|🧢
+양말|yangmal|جوراب|🧦
+장갑|janggap|دستکش|🧤
+안경|angyeong|عینک|👓
+가방|gabang|کیف|👜
+시계|sigye|ساعت مچی|⌚
+반지|banji|انگشتر|💍
+목걸이|mokgeori|گردنبند|📿
+스카프|seukapeu|شال گردن|🧣
+자켓|jaket|ژاکت|🧥
+티셔츠|tisyeocheu|تی‌شرت|👕
+벨트|belteu|کمربند|🎗️
+우산|usan|چتر|☂️
+`},
+{t:'طبیعت', w:`
+하늘|haneul|آسمان|🌌
+바다|bada|دریا|🌊
+산|san|کوه|⛰️
+강|gang|رودخانه|🏞️
+나무|namu|درخت|🌳
+꽃|kkot|گل|🌷
+풀|pul|علف|🌿
+별|byeol|ستاره|⭐
+달|dal|ماه|🌙
+해|hae|خورشید|☀️
+구름|gureum|ابر|☁️
+비|bi|باران|🌧️
+눈|nun|برف|❄️
+바람|baram|باد|💨
+흙|heuk|خاک|🟫
+돌|dol|سنگ|🪨
+불|bul|آتش|🔥
+얼음|eoreum|یخ|🧊
+숲|sup|جنگل|🌲
+사막|samak|بیابان|🏜️
+`},
+{t:'حمل و نقل', w:`
+자동차|jadongcha|خودرو|🚗
+버스|beoseu|اتوبوس|🚌
+지하철|jihacheol|مترو|🚇
+기차|gicha|قطار|🚆
+비행기|bihaenggi|هواپیما|✈️
+배|bae|کشتی|🚢
+자전거|jajeongeo|دوچرخه|🚲
+오토바이|otobai|موتورسیکلت|🏍️
+택시|taeksi|تاکسی|🚕
+트럭|teureok|کامیون|🚚
+길|gil|جاده|🛣️
+다리|dari|پل|🌉
+공항|gonghang|فرودگاه|🛫
+정류장|jeongnyujang|ایستگاه اتوبوس|🚏
+표|pyo|بلیت|🎫
+운전|unjeon|رانندگی|🚙
+속도|sokdo|سرعت|💨
+교통|gyotong|ترافیک|🚦
+신호등|sinhodeung|چراغ راهنما|🚥
+여행|yeohaeng|سفر|🧳
+`},
+{t:'احساسات', w:`
+기쁘다|gippeuda|شاد بودن|😄
+슬프다|seulpeuda|غمگین بودن|😢
+화나다|hwanada|عصبانی بودن|😠
+무섭다|museopda|ترسیدن|😨
+놀라다|nollada|تعجب کردن|😲
+부끄럽다|bukkeureopda|خجالت زده بودن|😳
+피곤하다|pigonhada|خسته بودن|😴
+배고프다|baegopeuda|گرسنه بودن|🍽️
+목마르다|mongmareuda|تشنه بودن|🥤
+아프다|apeuda|درد داشتن|🤒
+외롭다|oeropda|تنها بودن|🥺
+그립다|geuripda|دلتنگی داشتن|💭
+사랑|sarang|عشق|❤️
+미움|mium|نفرت|💔
+걱정|geokjeong|نگرانی|😟
+스트레스|seuteureseu|استرس|😫
+즐겁다|jeulgeopda|لذت‌بخش بودن|🎉
+편하다|pyeonhada|راحت بودن|😌
+불편하다|bulpyeonhada|ناراحت بودن|😖
+감동|gamdong|احساساتی شدن|🥹
+`},
+{t:'تکنولوژی', w:`
+컴퓨터|keompyuteo|کامپیوتر|💻
+핸드폰|haendeupon|موبایل|📱
+전화|jeonhwa|تلفن|☎️
+인터넷|inteonet|اینترنت|🌐
+이메일|imeil|ایمیل|📧
+비밀번호|bimilbeonho|رمز عبور|🔐
+화면|hwamyeon|صفحه نمایش|🖥️
+키보드|kibodeu|صفحه کلید|⌨️
+마우스|mauseu|موس|🖱️
+배터리|baeteori|باتری|🔋
+충전기|chungjeongi|شارژر|🔌
+사진|sajin|عکس|📷
+동영상|dongyeongsang|ویدیو|🎥
+앱|aep|اپلیکیشن|📲
+프로그램|peurogeuraem|برنامه|💾
+데이터|deiteo|داده|📊
+인공지능|ingongjineung|هوش مصنوعی|🤖
+로봇|robot|ربات|🦾
+게임|geim|بازی|🎮
+검색|geomsaek|جستجو|🔍
+`},
+{t:'ورزش و سرگرمی', w:`
+축구|chukgu|فوتبال|⚽
+농구|nonggu|بسکتبال|🏀
+야구|yagu|بیسبال|⚾
+수영|suyeong|شنا|🏊
+달리기|dalligi|دویدن|🏃
+등산|deungsan|کوهنوردی|🥾
+요가|yoga|یوگا|🧘
+운동|undong|ورزش|🏋️
+영화|yeonghwa|فیلم|🎬
+음악|eumak|موسیقی|🎵
+노래|norae|آهنگ|🎤
+춤|chum|رقص|💃
+책|chaek|کتاب|📚
+그림|geurim|نقاشی|🎨
+여행|yeohaeng|سفر|✈️
+낚시|naksi|ماهیگیری|🎣
+콘서트|konseoteu|کنسرت|🎪
+파티|pati|مهمانی|🎉
+산책|sanchaek|قدم زدن|🚶
+사진 찍기|sajin jikgi|عکاسی|📸
+`},
+{t:'سلامتی', w:`
+건강|geongang|سلامتی|💚
+병원|byeongwon|بیمارستان|🏥
+의사|uisa|پزشک|👨‍⚕️
+간호사|ganhosa|پرستار|👩‍⚕️
+약|yak|دارو|💊
+주사|jusa|تزریق|💉
+열|yeol|تب|🌡️
+감기|gamgi|سرماخوردگی|🤧
+기침|gichim|سرفه|😷
+콧물|kotmul|آبریزش بینی|🤧
+두통|dutong|سردرد|🤕
+배탈|baetal|دلدرد|🤢
+수면|sumyeon|خواب|😴
+휴식|hyusik|استراحت|🛋️
+다이어트|daieoteu|رژیم|🥗
+비타민|bitamin|ویتامین|💊
+응급실|eunggeupsil|اورژانس|🚑
+수술|susul|جراحی|🩺
+알레르기|allereugi|حساسیت|🤧
+예방|yebang|پیشگیری|🛡️
+`},
+{t:'عبارات پرکاربرد', w:`
+뭐예요?|mwoyeyo?|چیه؟|❓
+얼마예요?|eolmayeyo?|چنده؟|💰
+어디예요?|eodiyeyo?|کجاست؟|📍
+누구예요?|nuguyeyo?|کیه؟|🙋
+언제예요?|eonjeyeyo?|کِی هست؟|⏰
+왜요?|waeyo?|چرا؟|🤔
+어떻게요?|eotteokeyo?|چطور؟|🤷
+무슨 뜻이에요?|museun tteusieyo?|معنیش چیه؟|📖
+한국어로 뭐예요?|hangugeoro mwoyeyo?|به کره‌ای چیه؟|🇰🇷
+다시 말해 주세요|dasi malhae juseyo|دوباره بگو|🔁
+천천히 말해 주세요|cheoncheonhi malhae juseyo|آروم بگو|🐢
+이해했어요|ihaehaesseoyo|فهمیدم|✅
+몰라요|mollayo|نمی‌دونم|🤷
+도와주세요|dowajuseyo|کمکم کن|🆘
+괜찮아요|gwaenchanayo|مشکلی نیست|👌
+조금만요|jogeumanyo|فقط یه کم|🤏
+기다려 주세요|gidaryeo juseyo|صبر کن|⏳
+맛있어요|masisseoyo|خوشمزه‌ست|😋
+좋아요|joayo|خوبه|👍
+싫어요|sireoyo|دوست ندارم|👎
+`},
+{t:'خانه', w:`
+침대|chimdae|تخت|🛏️
+의자|uija|صندلی|🪑
+탁자|takja|میز|🪑
+문|mun|در|🚪
+창문|changmun|پنجره|🪟
+화장실|hwajangsil|دستشویی|🚻
+거실|geosil|اتاق نشیمن|🛋️
+부엌|bueok|آشپزخانه|🍳
+냉장고|naengjanggo|یخچال|🧊
+텔레비전|tellebijeon|تلویزیون|📺
+세탁기|setakgi|ماشین لباسشویی|🧺
+에어컨|eeokeon|کولر|❄️
+베개|begae|بالش|🛌
+이불|ibul|پتو|🛏️
+수건|sugeon|حوله|🧻
+비누|binu|صابون|🧼
+칫솔|chitsol|مسواک|🪥
+거울|geoul|آینه|🪞
+램프|raempeu|لامپ|💡
+열쇠|yeolsoe|کلید|🔑
+`},
+{t:'مدرسه و کار', w:`
+선생님|seonsaengnim|معلم|👨‍🏫
+학생|haksaeng|دانش‌آموز|🎒
+교실|gyosil|کلاس|🏫
+숙제|sukje|تکلیف|📝
+시험|siheom|امتحان|📝
+질문|jilmun|سؤال|❓
+대답|daedap|جواب|💬
+연필|yeonpil|مداد|✏️
+펜|pen|خودکار|🖊️
+공책|gongchaek|دفتر|📓
+가위|gawi|قیچی|✂️
+회사원|hoesawon|کارمند|👔
+회의|hoeui|جلسه|💼
+월급|wolgeup|حقوق|💵
+직업|jigeop|شغل|🧑‍💼
+사장님|sajangnim|رئیس|👔
+비서|biseo|منشی|🧑‍💻
+서류|seoryu|مدرک|📄
+휴가|hyuga|مرخصی|🏖️
+성적|seongjeok|نمره|📊
+`},
+{t:'پول و خرید', w:`
+돈|don|پول|💰
+은행|eunhaeng|بانک|🏦
+카드|kadeu|کارت|💳
+현금|hyeongeum|پول نقد|💵
+가격|gagyeok|قیمت|🏷️
+싸다|ssada|ارزان بودن|💸
+비싸다|bissada|گران بودن|💰
+할인|harin|تخفیف|🏷️
+영수증|yeongsujeung|رسید|🧾
+쇼핑|syoping|خرید|🛍️
+시장|sijang|بازار|🛒
+가게|gage|مغازه|🏪
+백화점|baekhwajeom|فروشگاه بزرگ|🏬
+계산|gyesan|حساب کردن|🧮
+거스름돈|geoseureumdon|باقی پول|💰
+지갑|jigap|کیف پول|👛
+동전|dongjeon|سکه|🪙
+지폐|jipye|اسکناس|💵
+세일|seil|حراج|🏷️
+무료|muryo|رایگان|🆓
+`},
+{t:'کشورها و ملیت', w:`
+한국|hanguk|کره|🇰🇷
+이란|iran|ایران|🇮🇷
+미국|miguk|آمریکا|🇺🇸
+중국|jungguk|چین|🇨🇳
+일본|ilbon|ژاپن|🇯🇵
+프랑스|peurangseu|فرانسه|🇫🇷
+영국|yeongguk|انگلستان|🇬🇧
+독일|dokil|آلمان|🇩🇪
+러시아|reosia|روسیه|🇷🇺
+터키|teoki|ترکیه|🇹🇷
+사람|saram|انسان|🧑
+외국인|oegugin|خارجی|🌍
+언어|eoneo|زبان|🗣️
+나라|nara|کشور|🌏
+세계|segye|جهان|🌎
+문화|munhwa|فرهنگ|🎎
+여행|yeohaeng|سفر|✈️
+여권|yeogwon|پاسپورت|🛂
+비자|bija|ویزا|🛂
+국기|gukgi|پرچم|🚩
+`},
+{t:'کلمات پرسشی', w:`
+무엇|mueot|چه|❓
+누구|nugu|چه کسی|🙋
+어디|eodi|کجا|📍
+언제|eonje|کِی|⏰
+왜|wae|چرا|🤔
+어떻게|eotteoke|چطور|🤷
+얼마|eolma|چقدر|💰
+몇|myeot|چند|🔢
+어떤|eotteon|چه نوعی|🔍
+무슨|museun|چه|❔
+이것|igeot|این|👉
+그것|geugeot|آن|👆
+저것|jeogeot|آن (دورتر)|🫵
+여기|yeogi|اینجا|📍
+거기|geogi|آنجا|🗺️
+저기|jeogi|آنجا (دورتر)|🌄
+지금|jigeum|حالا|⏰
+오늘|oneul|امروز|📅
+내일|naeil|فردا|⏭️
+어제|eoje|دیروز|⏮️
+`},
+{t:'کارهای روزمره', w:`
+일어나다|ireonada|بیدار شدن|🌅
+씻다|ssitda|شستن|🚿
+양치하다|yangchihada|مسواک زدن|🪥
+옷을 입다|oseul ipda|لباس پوشیدن|👕
+아침을 먹다|achimeul meokda|صبحانه خوردن|🍳
+출근하다|chulgeunhada|سر کار رفتن|💼
+퇴근하다|toegeunhada|از کار برگشتن|🏠
+요리하다|yorihada|آشپزی کردن|🍳
+청소하다|cheongsohada|تمیز کردن|🧹
+빨래하다|ppallaehada|لباس شستن|🧺
+설거지하다|seolgeojihada|ظرف شستن|🍽️
+산책하다|sanchaekhada|قدم زدن|🚶
+텔레비전을 보다|tellebijeoneul boda|تلویزیون دیدن|📺
+음악을 듣다|eumageul deutda|موسیقی گوش دادن|🎵
+전화하다|jeonhwahada|تلفن زدن|📞
+만나다|mannada|ملاقات کردن|🤝
+이야기하다|iyagihada|صحبت کردن|💬
+웃다|utda|خندیدن|😄
+울다|ulda|گریه کردن|😭
+쉬다|swida|استراحت کردن|🛋️
+`},
+{t:'مشاغل', w:`
+의사|uisa|پزشک|👨‍⚕️
+간호사|ganhosa|پرستار|👩‍⚕️
+선생님|seonsaengnim|معلم|👨‍🏫
+경찰|gyeongchal|پلیس|👮
+소방관|sobanggwan|آتش‌نشان|👨‍🚒
+요리사|yorisa|آشپز|👨‍🍳
+가수|gasu|خواننده|🎤
+배우|baeu|بازیگر|🎭
+운동선수|undongseonsu|ورزشکار|🏅
+화가|hwaga|نقاش|🎨
+작가|jakga|نویسنده|✍️
+기자|gija|خبرنگار|📰
+변호사|byeonhosa|وکیل|⚖️
+회계사|hoegyesa|حسابدار|🧮
+엔지니어|enjinieo|مهندس|👷
+프로그래머|peurogeuraemeo|برنامه‌نویس|👨‍💻
+조종사|jojongsa|خلبان|👨‍✈️
+미용사|miyongsa|آرایشگر|💇
+농부|nongbu|کشاورز|👨‍🌾
+어부|eobu|ماهیگیر|🎣
+`},
+{t:'حیوانات بیشتر', w:`
+닭|dak|مرغ|🐔
+오리|ori|اردک|🦆
+염소|yeomso|بز|🐐
+사슴|saseum|گوزن|🦌
+늑대|neukdae|گرگ|🐺
+여우|yeou|روباه|🦊
+쥐|jwi|موش|🐭
+다람쥐|daramjwi|سنجاب|🐿️
+고래|gorae|نهنگ|🐳
+상어|sangeo|کوسه|🦈
+돌고래|dolgorae|دلفین|🐬
+문어|muneo|اختاپوس|🐙
+게|ge|خرچنگ|🦀
+새우|saeu|میگو|🦐
+펭귄|penggwin|پنگوئن|🐧
+독수리|doksuri|عقاب|🦅
+부엉이|bueongi|جغد|🦉
+앵무새|aengmusae|طوطی|🦜
+기린|girin|زرافه|🦒
+얼룩말|eollungmal|گورخر|🦓
+`},
+{t:'میوه و سبزیجات', w:`
+사과|sagwa|سیب|🍎
+바나나|banana|موز|🍌
+오렌지|orenji|پرتقال|🍊
+포도|podo|انگور|🍇
+딸기|ttalgi|توت‌فرنگی|🍓
+수박|subak|هندوانه|🍉
+참외|chamoe|خربزه کره‌ای|🍈
+복숭아|boksunga|هلو|🍑
+배|bae|گلابی|🍐
+귤|gyul|نارنگی|🍊
+토마토|tomato|گوجه|🍅
+오이|oi|خیار|🥒
+당근|danggeun|هویج|🥕
+양파|yangpa|پیاز|🧅
+감자|gamja|سیب‌زمینی|🥔
+고구마|goguma|سیب‌زمینی شیرین|🍠
+양배추|yangbaechu|کلم|🥬
+시금치|sigeumchi|اسفناج|🥬
+버섯|beoseot|قارچ|🍄
+옥수수|oksusu|ذرت|🌽
+`},
+{t:'کلمات ربط و قیدها', w:`
+그리고|geurigo|و|➕
+하지만|hajiman|اما|↔️
+그래서|geuraeseo|بنابراین|➡️
+왜냐하면|waenyahamyeon|چون|💭
+또한|ttohan|همچنین|➕
+아주|aju|خیلی|🔥
+조금|jogeum|کمی|🤏
+많이|mani|زیاد|📈
+빨리|ppalli|سریع|🏃
+천천히|cheoncheonhi|آهسته|🐢
+자주|jaju|اغلب|🔁
+가끔|gakkeum|گاهی|⏳
+항상|hangsang|همیشه|♾️
+절대|jeoldae|هرگز|🚫
+먼저|meonjeo|اول|1️⃣
+나중에|najunge|بعداً|⏭️
+함께|hamkke|با هم|🤝
+혼자|honja|تنها|🧍
+물론|mullon|البته|✅
+아마도|amado|شاید|❓
+`}
+];
+
+/* Parse */
+const WORDS = [];
+DAYS.forEach((d, di) => {
+  d.words = d.w.trim().split('\n').map(line => {
+    const p = line.split('|');
+    const w = {
+      ko: p[0].trim(), ro: p[1].trim(), fa: p[2].trim(), emoji: p[3].trim(),
+      day: di + 1, cat: d.t,
+      isHangul: di === 0
+    };
+    WORDS.push(w);
+    return w;
+  });
+});
+
+/* =========================================================
+   ۴) ذخیره‌سازی
+   ========================================================= */
+const STORE_KEY = 'khatmin_hangul_v1';
+const todayStr = () => new Date().toDateString();
+
+let state = { currentDay: 1, learned: [], lastDate: null };
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORE_KEY);
+    if(raw){
+      const s = JSON.parse(raw);
+      state.currentDay = Math.max(1, Math.min(DAYS.length, s.currentDay || 1));
+      state.learned = Array.isArray(s.learned) ? s.learned : [];
+      state.lastDate = s.lastDate || null;
+    }
+  }catch(e){}
+  const today = todayStr();
+  if(!state.lastDate) state.lastDate = today;
+  else if(state.lastDate !== today){
+    if(state.currentDay < DAYS.length) state.currentDay += 1;
+    state.lastDate = today;
+  }
+  saveState();
+}
+function saveState(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){} }
+function isLearned(ko){ return state.learned.includes(ko); }
+function markLearned(ko){ if(!isLearned(ko)){ state.learned.push(ko); saveState(); } }
+
+/* =========================================================
+   ۵) TTS — کره‌ای اول، بعد انگلیسی روی رومانیزه
+   ========================================================= */
+let koreanVoice = null;
+let englishVoice = null;
+
+function findKoreanVoice(){
+  if(!('speechSynthesis' in window)) return null;
+  const voices = speechSynthesis.getVoices();
+  return voices.find(v => v.lang === 'ko-KR')
+      || voices.find(v => v.lang && v.lang.toLowerCase().startsWith('ko'))
+      || voices.find(v => /korean|한국/i.test(v.name || ''))
+      || null;
+}
+function findEnglishVoice(){
+  if(!('speechSynthesis' in window)) return null;
+  const voices = speechSynthesis.getVoices();
+  return voices.find(v => v.lang === 'en-US')
+      || voices.find(v => v.lang === 'en-GB')
+      || voices.find(v => v.lang && v.lang.toLowerCase().startsWith('en'))
+      || null;
+}
+function refreshVoices(){
+  koreanVoice = findKoreanVoice();
+  englishVoice = findEnglishVoice();
+  return koreanVoice;
+}
+if('speechSynthesis' in window){
+  refreshVoices();
+  speechSynthesis.onvoiceschanged = refreshVoices;
+  setTimeout(refreshVoices, 300);
+  setTimeout(refreshVoices, 1200);
+  setTimeout(refreshVoices, 2500);
+}
+
+function speak(text, el, romanization){
+  if(!('speechSynthesis' in window)){
+    toast('مرورگرت از تلفظ صوتی پشتیبانی نمی‌کند', true);
+    return;
+  }
+  try{
+    speechSynthesis.cancel();
+    refreshVoices();
+    const u = new SpeechSynthesisUtterance();
+
+    if(koreanVoice){
+      u.text = text;
+      u.voice = koreanVoice;
+      u.lang = koreanVoice.lang || 'ko-KR';
+      u.rate = 0.85;
+      u.pitch = 1.05;
+    } else {
+      const ro = romanization || hangulToRomanization(text);
+      if(!ro){ toast('چیزی برای خواندن پیدا نشد', true); return; }
+      u.text = ro;
+      if(englishVoice) u.voice = englishVoice;
+      u.lang = (englishVoice && englishVoice.lang) || 'en-US';
+      u.rate = 0.82;
+      u.pitch = 1.0;
+    }
+
+    if(el){
+      el.classList.add('speaking');
+      u.onend = () => el.classList.remove('speaking');
+      u.onerror = () => el.classList.remove('speaking');
+    }
+    speechSynthesis.speak(u);
+  }catch(e){ console.warn('speak error', e); }
+}
+
+/* =========================================================
+   ۶) توست و کانفتی
+   ========================================================= */
+let toastTimer;
+function toast(msg, isErr){
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.toggle('err', !!isErr);
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+function celebrate(){
+  const emojis = ['🌸','✨','💖','⭐','🎉','💫','🌟','🦋','🌷','🇰🇷'];
+  for(let i = 0; i < 26; i++){
+    const el = document.createElement('div');
+    el.className = 'confetti';
+    el.textContent = pick(emojis);
+    el.style.left = Math.random() * 100 + '%';
+    el.style.animationDelay = Math.random() * 0.4 + 's';
+    el.style.fontSize = (12 + Math.random() * 22) + 'px';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 3200);
+  }
+}
+
+/* =========================================================
+   ۷) دک و کارت‌ها
+   ========================================================= */
+let cardIndex = 0;
+
+function getDeck(){
+  const all = [];
+  for(let d = 0; d < state.currentDay; d++){
+    for(const w of DAYS[d].words){
+      if(!isLearned(w.ko)) all.push(w);
+    }
+  }
+  return all;
+}
+function currentDayWords(){ return DAYS[state.currentDay - 1].words; }
+function currentDayLearnedCount(){ return currentDayWords().filter(w => isLearned(w.ko)).length; }
+function allCurrentDayLearned(){ return currentDayLearnedCount() === currentDayWords().length; }
+
+function renderDayStrip(){
+  const strip = $('#dayStrip');
+  strip.innerHTML = '';
+  for(let d = 1; d <= state.currentDay; d++){
+    const words = DAYS[d - 1].words;
+    const done = words.filter(w => isLearned(w.ko)).length;
+    const isHangulDay = d === 1;
+    let cls = 'day-pill';
+    if(d === state.currentDay) cls += ' current';
+    else if(done === words.length) cls += ' done';
+    else if(isHangulDay) cls += ' hangul';
+    const btn = document.createElement('button');
+    btn.className = cls;
+    const label = isHangulDay ? '📚 الفبا' : ('روز ' + faNum(d));
+    btn.innerHTML = `${label} <span class="dp-badge">${faNum(done)}/${faNum(words.length)}</span>`;
+    btn.addEventListener('click', () => {
+      const deck = getDeck();
+      const idx = deck.findIndex(w => w.day === d);
+      if(idx >= 0){ cardIndex = idx; renderCard(); }
+      else toast('همه‌ی کارت‌های این روز یاد گرفته شده ✅');
+    });
+    strip.appendChild(btn);
+  }
+}
+
+function renderCard(){
+  const deck = getDeck();
+  const wrap = $('#flashWrap');
+  const doneBox = $('#deckDone');
+  const nextDayBtn = $('#nextDayBtn');
+
+  if(deck.length === 0){
+    wrap.hidden = true;
+    doneBox.hidden = false;
+    $('#dayProgress').style.width = '100%';
+    $('#dayProgressLabel').textContent = faNum(currentDayWords().length) + ' / ' + faNum(currentDayWords().length);
+    if(state.currentDay < DAYS.length){
+      nextDayBtn.hidden = false;
+      nextDayBtn.textContent = '🚀 برو به روز ' + faNum(state.currentDay + 1) + ' · ' + DAYS[state.currentDay].t;
+    }else nextDayBtn.hidden = true;
+    renderDayStrip();
+    return;
+  }
+
+  wrap.hidden = false;
+  doneBox.hidden = true;
+  if(cardIndex >= deck.length) cardIndex = 0;
+  if(cardIndex < 0) cardIndex = deck.length - 1;
+
+  const w = deck[cardIndex];
+  const card = $('#flashCard');
+  card.style.animation = 'none';
+  void card.offsetWidth;
+  card.style.animation = 'cardIn .55s cubic-bezier(.2,.8,.3,1.2)';
+
+  $('#cardEmoji').textContent = w.emoji;
+  $('#cardCat').textContent = w.cat;
+  $('#cardKo').textContent = w.ko;
+  $('#cardRo').textContent = w.ro;
+  $('#cardFa').textContent = w.fa;
+
+  const isHangul = state.currentDay === 1;
+  $('#heroBadge').textContent = isHangul ? '📚 한글 자모 · الفبای کره‌ای' : '🌸 오늘의 단어 · کلمات امروز';
+  $('#heroTitle').textContent = 'روز ' + faNum(state.currentDay) + ' · ' + DAYS[state.currentDay - 1].t;
+  $('#heroSub').textContent = 'کارت ' + faNum(cardIndex + 1) + ' از ' + faNum(deck.length) + ' کارت باقی‌مانده — روی بلندگو بزن و گوش کن!';
+
+  if(allCurrentDayLearned() && state.currentDay < DAYS.length){
+    nextDayBtn.hidden = false;
+    nextDayBtn.textContent = '🚀 برو به روز ' + faNum(state.currentDay + 1) + ' · ' + DAYS[state.currentDay].t;
+  }else nextDayBtn.hidden = true;
+
+  const total = currentDayWords().length;
+  const done = currentDayLearnedCount();
+  $('#dayProgress').style.width = (done / total * 100) + '%';
+  $('#dayProgressLabel').textContent = faNum(done) + ' / ' + faNum(total) + ' (روز ' + faNum(state.currentDay) + ')';
+
+  renderDayStrip();
+}
+function nextCard(){ cardIndex++; renderCard(); }
+function prevCard(){ cardIndex--; renderCard(); }
+
+/* =========================================================
+   ۸) کلمات یادگرفته
+   ========================================================= */
+let searchQuery = '';
+function renderSaved(){
+  const grid = $('#savedGrid');
+  const empty = $('#savedEmpty');
+  const count = $('#savedCount');
+
+  const allLearned = WORDS.filter(w => isLearned(w.ko));
+  count.textContent = faNum(allLearned.length) + ' کارت';
+
+  const list = searchQuery
+    ? allLearned.filter(w =>
+        w.fa.includes(searchQuery) ||
+        w.ko.includes(searchQuery) ||
+        w.ro.toLowerCase().includes(searchQuery.toLowerCase()))
+    : allLearned;
+
+  grid.innerHTML = '';
+  if(list.length === 0){
+    empty.hidden = false;
+    grid.hidden = true;
+    if(allLearned.length > 0 && searchQuery) empty.querySelector('p').textContent = 'چیزی پیدا نشد!';
+    else empty.querySelector('p').textContent = 'هنوز هیچ کارتی یاد نگرفتی!';
+    return;
+  }
+  empty.hidden = true;
+  grid.hidden = false;
+
+  list.forEach((w, i) => {
+    const el = document.createElement('div');
+    el.className = 'saved-item';
+    el.style.animationDelay = Math.min(i * 0.03, 0.6) + 's';
+    el.innerHTML = `
+      <div class="saved-emoji">${w.emoji}</div>
+      <div class="saved-ko">${w.ko}</div>
+      <div class="saved-ro">${w.ro}</div>
+      <div class="saved-fa">${w.fa}</div>
+      <div class="saved-tools">
+        <button class="mini-btn" title="تلفظ">🔊</button>
+        <button class="mini-btn del" title="حذف">🗑️</button>
+      </div>`;
+    el.querySelector('.mini-btn').addEventListener('click', () => speak(w.ko, null, w.ro));
+    el.querySelector('.mini-btn.del').addEventListener('click', () => {
+      state.learned = state.learned.filter(k => k !== w.ko);
+      saveState();
+      renderSaved(); renderCard();
+      toast('حذف شد');
+    });
+    grid.appendChild(el);
+  });
+}
+
+/* =========================================================
+   ۹) دفترچه + کیبورد کره‌ای
+   ========================================================= */
+let nbWord = null;
+let comp = {cho:'', jung:'', jong:''};
+let committed = '';
+let jamoMode = false;
+
+function composeSyllable(cho, jung, jong){
+  if(!cho || !jung) return '';
+  const ci = CHO_LIST.indexOf(cho);
+  const vi = JUNG_LIST.indexOf(jung);
+  const fi = jong ? JONG_LIST.indexOf(jong) : 0;
+  if(ci < 0 || vi < 0 || fi < 0) return '';
+  return String.fromCharCode(0xAC00 + (ci * 21 + vi) * 28 + fi);
+}
+function currentComposing(){ return composeSyllable(comp.cho, comp.jung, comp.jong); }
+function syncInput(){ $('#nbInput').value = committed + currentComposing(); }
+function commitComposing(){
+  const s = currentComposing();
+  if(s) committed += s;
+  comp = {cho:'', jung:'', jong:''};
+  syncInput();
+}
+function pressCho(c){
+  if(jamoMode){ committed += c; syncInput(); return; }
+  if(comp.jong){ commitComposing(); comp.cho = c; }
+  else if(comp.cho && !comp.jung){
+    const doubles = {'ㄱ':'ㄲ','ㄷ':'ㄸ','ㅂ':'ㅃ','ㅅ':'ㅆ','ㅈ':'ㅉ'};
+    comp.cho = (doubles[comp.cho] === c) ? c : c;
+  }else if(comp.cho && comp.jung){
+    if(JONG_LIST.includes(c)) comp.jong = c;
+    else { commitComposing(); comp.cho = c; }
+  }else comp.cho = c;
+  syncInput();
+}
+function pressJung(v){
+  if(jamoMode){ committed += v; syncInput(); return; }
+  if(!comp.cho){ comp.cho = 'ㅇ'; comp.jung = v; }
+  else if(comp.cho && !comp.jung){ comp.jung = v; }
+  else if(comp.cho && comp.jung && !comp.jong){
+    const combos = {'ㅗㅏ':'ㅘ','ㅗㅐ':'ㅙ','ㅗㅣ':'ㅚ','ㅜㅓ':'ㅝ','ㅜㅔ':'ㅞ','ㅜㅣ':'ㅟ','ㅡㅣ':'ㅢ'};
+    const key = comp.jung + v;
+    if(combos[key]) comp.jung = combos[key];
+    else { commitComposing(); comp.cho = 'ㅇ'; comp.jung = v; }
+  }else if(comp.jong){
+    const j = comp.jong;
+    const split = {'ㄳ':['ㄱ','ㅅ'],'ㄵ':['ㄴ','ㅈ'],'ㄶ':['ㄴ','ㅎ'],'ㄺ':['ㄹ','ㄱ'],'ㄻ':['ㄹ','ㅁ'],'ㄼ':['ㄹ','ㅂ'],'ㄽ':['ㄹ','ㅅ'],'ㄾ':['ㄹ','ㅌ'],'ㄿ':['ㄹ','ㅍ'],'ㅀ':['ㄹ','ㅎ'],'ㅄ':['ㅂ','ㅅ']};
+    if(split[j]){
+      comp.jong = split[j][0];
+      commitComposing();
+      comp.cho = split[j][1];
+      comp.jung = v;
+    }else{
+      comp.jong = '';
+      commitComposing();
+      comp.cho = j;
+      comp.jung = v;
+    }
+  }
+  syncInput();
+}
+function backspace(){
+  if(jamoMode){ committed = committed.slice(0, -1); syncInput(); return; }
+  if(comp.jong) comp.jong = '';
+  else if(comp.jung) comp.jung = '';
+  else if(comp.cho) comp.cho = '';
+  else committed = committed.slice(0, -1);
+  syncInput();
+}
+function buildKeyboard(){
+  const choRow = $('#kbCho');
+  const jungRow = $('#kbJung');
+  choRow.innerHTML = ''; jungRow.innerHTML = '';
+  ['ㄱ','ㄴ','ㄷ','ㄹ','ㅁ','ㅂ','ㅅ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'].forEach(c => {
+    const b = document.createElement('button'); b.textContent = c;
+    b.addEventListener('click', () => pressCho(c)); choRow.appendChild(b);
+  });
+  ['ㄲ','ㄸ','ㅃ','ㅆ','ㅉ'].forEach(c => {
+    const b = document.createElement('button'); b.textContent = c;
+    b.addEventListener('click', () => pressCho(c)); choRow.appendChild(b);
+  });
+  ['ㅏ','ㅐ','ㅑ','ㅓ','ㅔ','ㅕ','ㅗ','ㅛ','ㅜ','ㅠ','ㅡ','ㅣ'].forEach(v => {
+    const b = document.createElement('button'); b.textContent = v;
+    b.addEventListener('click', () => pressJung(v)); jungRow.appendChild(b);
+  });
+  ['ㅒ','ㅖ','ㅘ','ㅙ','ㅚ','ㅝ','ㅞ','ㅟ','ㅢ'].forEach(v => {
+    const b = document.createElement('button'); b.textContent = v;
+    b.addEventListener('click', () => pressJung(v)); jungRow.appendChild(b);
+  });
+  document.querySelectorAll('.kb-special button').forEach(b => {
+    b.addEventListener('click', () => {
+      const k = b.dataset.kb;
+      if(k === 'space'){ commitComposing(); committed += ' '; syncInput(); }
+      else if(k === 'back'){ backspace(); }
+      else if(k === 'enter'){ submitNotebook(); }
+    });
+  });
+}
+
+function openNotebook(word){
+  nbWord = word;
+  const isJamo = isJamoChar(word.ko);
+  jamoMode = isJamo;
+  comp = {cho:'', jung:'', jong:''};
+  committed = '';
+
+  $('#nbEmoji').textContent = word.emoji;
+  $('#nbFa').textContent = word.fa;
+  $('#nbCat').textContent = word.cat;
+  $('#nbInput').value = '';
+  $('#nbInput').classList.remove('shake', 'ok');
+  $('#nbMsg').textContent = '';
+  $('#nbMsg').className = 'nb-msg';
+
+  if(isJamo){
+    $('#nbPrompt').textContent = 'این حرف رو از کیبورد زیر انتخاب کن (یا تایپ کن):';
+    $('#nbKb').hidden = false;
+    $('#nbKbToggle').textContent = '⌨️ بستن کیبورد';
+    $('#nbInput').setAttribute('readonly', 'readonly');
+  }else{
+    $('#nbPrompt').textContent = 'این کلمه رو به کره‌ای بنویس تا «یاد گرفتم» ثبت بشه:';
+    $('#nbKb').hidden = true;
+    $('#nbKbToggle').textContent = '⌨️ نمایش کیبورد کره‌ای';
+    $('#nbInput').removeAttribute('readonly');
+  }
+
+  $('#nbOverlay').hidden = false;
+  setTimeout(() => { if(!isJamo) $('#nbInput').focus(); }, 120);
+}
+function closeNotebook(){ $('#nbOverlay').hidden = true; }
+
+function isCorrectAnswer(input, target){
+  const ni = normalize(input);
+  const nt = normalize(target);
+  if(ni === nt) return true;
+  if(isJamoChar(target) && isVowelJamo(target)){
+    const syll = silentSyllable(target);
+    if(syll && ni === syll) return true;
+  }
+  return false;
+}
+
+function submitNotebook(){
+  if(!nbWord) return;
+  if(!$('#nbKb').hidden && !jamoMode) commitComposing();
+  const input = $('#nbInput');
+  const val = normalize(input.value);
+  const target = normalize(nbWord.ko);
+
+  if(!val){
+    $('#nbMsg').textContent = 'چیزی ننوشتی! کارت رو بنویس.';
+    $('#nbMsg').className = 'nb-msg';
+    input.classList.add('shake');
+    setTimeout(() => input.classList.remove('shake'), 500);
+    return;
+  }
+
+  if(isCorrectAnswer(val, target)){
+    input.classList.add('ok');
+    $('#nbMsg').textContent = '✅ آفرین! درست نوشتی — کارت ثبت شد.';
+    $('#nbMsg').className = 'nb-msg ok';
+    markLearned(nbWord.ko);
+    speak(nbWord.ko, null, nbWord.ro);
+    celebrate();
+    setTimeout(() => {
+      closeNotebook();
+      renderSaved();
+      renderCard();
+      toast('🌟 «' + nbWord.ko + '» یاد گرفته شد!');
+    }, 950);
+  }else{
+    input.classList.add('shake');
+    setTimeout(() => input.classList.remove('shake'), 500);
+    const hint = nbWord.ko.length === 1
+      ? nbWord.ko
+      : nbWord.ko.charAt(0) + '…';
+    $('#nbMsg').textContent = '❌ اشتباهه! دوباره تلاش کن. راهنمایی: ' + hint;
+    $('#nbMsg').className = 'nb-msg';
+    if(!jamoMode) input.focus();
+  }
+}
+
+/* =========================================================
+   ۱۰) Khatmin — هوش مصنوعی
+   ========================================================= */
+const context = {
+  userName: null,
+  level: 'beginner',
+  lastTopic: null,
+  totalMsgs: 0,
+  askingName: false,
+  quizActive: false,
+  quizWord: null,
+  quizAttempts: 0,
+  quizCorrect: 0,
+  quizTotal: 0
+};
+
+const MISTAKES = [
+  { re:/안녕하새요|안녕하세여|안녕하새여/, right:'안녕하세요', fa:'«안녕하세요» درست است. «안녕» یعنی سلام و «하세요» فعل مؤدبانه است.' },
+  { re:/감사함니다|감사햄니다|감사함미다/, right:'감사합니다', fa:'املای درست «감사합니다» است. حرف «ㅂ» پیش از «니다» می‌آید، نه «ㅁ».' },
+  { re:/저는\s*\S+\s*이예요/, right:'저는 ... 이에요 / 예요', fa:'بعد از صامت «이에요» و بعد از مصوت «예요» می‌آید. مثال: 저는 학생이에요.' },
+  { re:/나는\s*\S+\s*입니다/, right:'저는 ... 입니다', fa:'«나» خودمانی و «입니다» رسمی‌اند. بگو «저는 ... 입니다» یا «나는 ... 이야».' }
+];
+
+function findInBank(q){
+  if(!q) return null;
+  const ql = q.toLowerCase();
+  for(const w of WORDS){
+    if(w.fa === q || w.ko === q || w.ro.toLowerCase() === ql) return w;
+  }
+  for(const w of WORDS){
+    if((w.fa.includes(q) && q.length >= 2) || (w.ko.includes(q) && q.length >= 1) || w.ro.toLowerCase().includes(ql)) return w;
+  }
+  return null;
+}
+
+const PHRASE_MAP = {
+  'خوبی': ['잘 지내요?', 'jal jinaeyo?'],
+  'چطوری': ['어떻게 지내요?', 'eotteoke jinaeyo?'],
+  'دوستت دارم': ['사랑해요', 'saranghaeyo'],
+  'ببخشید': ['죄송합니다', 'joesonghamnida'],
+  'ممنون': ['감사합니다', 'gamsahamnida'],
+  'خداحافظ': ['안녕히 가세요', 'annyeonghi gaseyo'],
+  'صبح بخیر': ['좋은 아침이에요', 'joeun achimieyo'],
+  'شب بخیر': ['잘 자요', 'jal jayo'],
+  'حال شما چطوره': ['어떻게 지내세요?', 'eotteoke jinaeseyo?'],
+  'اسم من': ['제 이름은 ... 이에요', 'je ireumeun ... ieyo'],
+  'بله': ['네', 'ne'],
+  'نه': ['아니요', 'aniyo'],
+  'سلام': ['안녕하세요', 'annyeonghaseyo'],
+  'متشکرم': ['감사합니다', 'gamsahamnida'],
+  'خوشحالم': ['반갑습니다', 'bangapseumnida'],
+  'کمک': ['도와주세요', 'dowajuseyo'],
+  'آب': ['물', 'mul'],
+  'غذا': ['밥', 'bap'],
+  'عشق': ['사랑', 'sarang']
+};
+
+const CULTURE_TIPS = [
+  '🇰🇷 در کره، وقتی کسی به خانه‌ات می‌آید، کفش‌ها را در می‌آورند.',
+  '🇰🇷 سن و سال در کره مهم است و بر نوع صحبت (رسمی/خودمانی) تأثیر می‌گذارد.',
+  '🇰🇷 در کره هنگام دادن یا گرفتن چیز با دو دست، ادب بیشتری نشان می‌دهد.',
+  '🇰🇷 «한국어» (hangugeo) زبان کره‌ای است و «한글» (hangul) خط کره‌ای.',
+  '🇰🇷 کیمچی در هر وعده‌ی غذایی کره‌ای‌ها هست — نماد فرهنگ غذایی کره.',
+  '🇰🇷 در کره، «나이» (سن) در ابتدای آشنایی پرسیده می‌شود چون سطح صحبت را مشخص می‌کند.'
+];
+
+const GRAMMAR_TIPS = {
+  formal: '💡 در کره‌ای، افعال پایانی به «-ㅂ니다 / -습니다» (رسمی) یا «-아요 / -어요» (خودمانی و مؤدبانه) تمام می‌شوند.',
+  particles: '💡 ذرات «은/는» (موضوع) و «이/가» (فاعل) بعد از اسم می‌آیند. بعد از صامت «은 / 이» و بعد از مصوت «는 / 가».',
+  object: '💡 ذره‌ی مفعولی «을/를» است: بعد از صامت «을» و بعد از مصوت «를». مثال: 밥을 먹어요.',
+  verb: '💡 ترتیب جمله در کره‌ای: فاعل + مفعول + فعل (SOV). مثال: 저는 밥을 먹어요.',
+  copula: '💡 «-이에요 / -예요» یعنی «... هست». بعد از صامت «이에요» و بعد از مصوت «예요».'
+};
+
+function detectIntent(text){
+  const t = text.toLowerCase();
+  if(/امتحان|quiz|test|بپرس|سوال بپرس|ازمایش/.test(t)) return 'quiz';
+  if(/یادم بده|teach|کلمه جدید|کلمه یاد|یادگیری|کلمه بگو/.test(t)) return 'teach';
+  if(/داستان|story|قصه/.test(t)) return 'story';
+  if(/ترجمه|چی میشه|چی می‌شه|چیه|معنی|یعنی|به کره‌ای|به زبان/.test(t)) return 'translate';
+  if(/اسم(ت|تو|شما|تون)|نام(ت|تو|شما)|کی هستی|خودت|معرفی|تو کی هستی/.test(t)) return 'identity';
+  if(/خوبی|چطوری|حال(ت|تو|شما)|how are you/.test(t)) return 'howareyou';
+  if(/خداحافظ|بای|bye|다음에/.test(t)) return 'goodbye';
+  if(/ممنون|مرسی|تشکر|thanks|고마/.test(t)) return 'thanks';
+  if(/ساعت|زمان|وقت|time/.test(t)) return 'time';
+  if(/هوا|آب و هوا|weather/.test(t)) return 'weather';
+  if(/کشور|ملیت|اهل کجا|country/.test(t)) return 'country';
+  if(/سن|چند سالت|age/.test(t)) return 'age';
+  if(/غذا|خوراکی|food|گشنه/.test(t)) return 'food';
+  if(/خانواده|family/.test(t)) return 'family';
+  if(/عشق|دوستت دارم|love/.test(t)) return 'love';
+  if(/خوشحال|غمگین|ناراحت|حس|feeling/.test(t)) return 'feeling';
+  if(/گرامر|دستور|قواعد|grammar/.test(t)) return 'grammar';
+  if(/فرهنگ|کره جنوبی|culture/.test(t)) return 'culture';
+  if(/صبح بخیر|good morning/.test(t)) return 'morning';
+  if(/شب بخیر|good night/.test(t)) return 'night';
+  if(/کمک|help|راهنما/.test(t)) return 'help';
+  if(/سلام|درود|hi|hello|hey/.test(t) && t.length < 20) return 'greeting';
+  return 'unknown';
+}
+
+function khatminReply(text){
+  const t = (text || '').trim();
+  if(!t) return { ko:'다시 한 번 말해 줄래요?', fa:'متوجه نشدم.' };
+
+  if(context.quizActive && context.quizWord) return handleQuizAnswer(t);
+
+  const hasKo = hasHangul(t);
+  const hasFa = /[\u0600-\u06FF]/.test(t);
+  const hasLat = /[a-zA-Z]/.test(t);
+
+  /* تشخیص اسم کاربر */
+  const nameMatch =
+    t.match(/اسم من\s+([^\s،.؟!]+)/) ||
+    t.match(/من\s+([^\s،.؟!]+)\s+هستم/) ||
+    (context.askingName && /^[\u0600-\u06FF\w]{2,20}$/.test(t.trim()) ? [null, t.trim()] : null);
+
+  if(nameMatch && nameMatch[1]){
+    const name = nameMatch[1];
+    const notNames = ['خوب','خوبم','بد','بدی','خوشحال','غمگین','گرسنه','تشنه','خسته','اینجا','آنجا','کره','ایران','چی','هستم'];
+    if(!notNames.includes(name)){
+      context.userName = name;
+      context.askingName = false;
+      return {
+        ko: `반갑습니다, ${name}씨!`,
+        fa: `خوشحالم ${name} جان! حالا این جمله رو تکرار کن: «저는 ${name} 이에요» یعنی «من ${name} هستم».`,
+        tip: '«저는 ... 이에요/예요» = من ... هستم.'
+      };
+    }
+  }
+
+  if(hasKo){
+    for(const m of MISTAKES){
+      if(m.re.test(t)) return { ko:'아, 이렇게 말하는 게 더 자연스러워요 → ' + m.right, fa:'💡 ' + m.fa };
+    }
+    return koreanReply(t);
+  }
+
+  if(!hasKo && hasLat && !hasFa){
+    const found = WORDS.find(w => w.ro.toLowerCase() === t.toLowerCase());
+    if(found) return { ko: found.ko, fa: `«${t}» یعنی «${found.fa}» — به کره‌ای: ${found.ko}`, tip:'حالا تلفظش رو با دکمه‌ی 🔊 گوش کن!' };
+    return { ko:'한글로 써 주세요!', fa:`نوشتی «${t}» — این حروف لاتین است. با حروف کره‌ای (한글) بنویس. مثلاً annyeonghaseyo → 안녕하세요.` };
+  }
+
+  const intent = detectIntent(t);
+  switch(intent){
+    case 'quiz': return startQuiz();
+    case 'teach': return teachWord();
+    case 'story': return {
+      ko:'옛날 옛적에 한 소녀가 살았어요. 그 소녀는 아주 착했어요. 어느 날, 소녀는 길에서 작은 새를 만났어요.',
+      fa:'روزی روزگاری یک دختر زندگی می‌کرد. آن دختر خیلی مهربان بود. یک روز، دختر در راه یک پرنده‌ی کوچک دید.',
+      tip:'«옛날 옛적에» = روزی روزگاری · «살았어요» = زندگی می‌کرد · «착했어요» = مهربان بود'
+    };
+    case 'identity':
+      context.askingName = true;
+      return {
+        ko:'제 이름은 Khatmin이에요. 당신은 누구예요?',
+        fa:'من خاطمین هستم، تو کی هستی؟ 😊',
+        tip:'اسمت رو بگو تا باهات آشنا بشم! مثلاً بگو: «اسم من علیه»'
+      };
+    case 'howareyou': return {
+      ko:'저는 아주 잘 지내요! 오늘도 한국어를 가르칠 준비가 됐어요. 😊',
+      fa:'من خیلی خوبم! امروز هم آماده‌ام کره‌ای یاد بدم. تو چطوری؟ می‌تونی بگی «저는 잘 지내요» یعنی «من خوبم».',
+      tip:'«잘 지내요?» = خوبی؟ · «잘 지내요» = خوبم.'
+    };
+    case 'goodbye': return {
+      ko:'안녕히 가세요! 다음에 또 만나요. 화이팅! 👋',
+      fa:'خداحافظ! دفعه‌ی بعد هم بیا. «화이팅» یعنی «قوی باش / موفق باشی».'
+    };
+    case 'thanks': return {
+      ko:'천만에요! 도움이 되어서 기뻐요. 😊',
+      fa:'خواهش می‌کنم! خوشحالم که کمک کردم. «천만에요» = خواهش می‌کنم.'
+    };
+    case 'time': return {
+      ko:'지금 몇 시예요? 한국은 지금 아침이에요!',
+      fa:'الان ساعت چنده؟ «몇 시예요?» یعنی «ساعت چنده؟» و «지금» یعنی «الان».'
+    };
+    case 'weather': return {
+      ko:'오늘 날씨가 어때요? 한국은 봄이라서 아주 좋아요! 🌸',
+      fa:'هوا چطوره؟ «날씨» یعنی هوا، «어때요?» یعنی چطوره؟ کره الان بهاره و هوا خیلی خوبه!'
+    };
+    case 'country': return {
+      ko:'저는 한국에서 왔어요. 한국은 아름다운 나라예요! 🇰🇷',
+      fa:'من اهل کره‌ام. کره کشور زیبایی است! «어디에서 왔어요?» = اهل کجایی؟'
+    };
+    case 'age': return {
+      ko:'저는 인공지능이라서 나이가 없어요! 😄',
+      fa:'من هوش مصنوعی هستم و سن ندارم! 😄 «몇 살이에요?» = چند سالته؟'
+    };
+    case 'food': return {
+      ko:'한국 음식 중에서 김치와 비빔밥을 추천해요! 정말 맛있어요. 🍚',
+      fa:'از بین غذای کره‌ای، «کیمچی» و «بی‌بیم‌باپ» رو پیشنهاد می‌کنم! «맛있어요» = خوشمزه‌ست.'
+    };
+    case 'family': return {
+      ko:'가족은 아주 소중해요. 한국어로 가족은 «가족»이에요. 👨‍👩‍👧‍👦',
+      fa:'خانواده خیلی عزیزه. به کره‌ای «가족» می‌شه خانواده.'
+    };
+    case 'love': return {
+      ko:'사랑해요! 그건 «دوستت دارم» می‌شه. ❤️',
+      fa:'«사랑해요» یعنی دوستت دارم!'
+    };
+    case 'feeling': return {
+      ko:'오늘 기분이 어때요? 저는 행복해요! 😊',
+      fa:'حست چطوره؟ «기분» = حال/احساس. «행복해요» = خوشحالم، «슬퍼요» = غمگینم.'
+    };
+    case 'grammar': return {
+      ko:'한국어 문법은 조금 어렵지만 규칙적이에요!',
+      fa:'گرامر کره‌ای کمی سخته ولی قانون‌منده. ' + pick(Object.values(GRAMMAR_TIPS))
+    };
+    case 'culture': return {
+      ko:'한국 문화는 정말 다양하고 재미있어요!',
+      fa: pick(CULTURE_TIPS)
+    };
+    case 'morning': return {
+      ko:'좋은 아침이에요! 오늘도 화이팅! ☀️',
+      fa:'صبح بخیر! امروز هم قوی باش! «좋은 아침이에요» = صبح بخیر.'
+    };
+    case 'night': return {
+      ko:'잘 자요! 좋은 꿈 꿔요. 🌙',
+      fa:'شب بخیر! خواب‌های خوب ببینی. «잘 자요» = شب بخیر.'
+    };
+    case 'help': return {
+      ko:'저는 여러분의 한국어 공부를 도와줄 수 있어요!',
+      fa:'من می‌تونم کمکت کنم! چیزهایی که می‌تونی بپرسی:\n• «یه کلمه یادم بده»\n• «امتحانم کن»\n• «داستان»\n• «سلام به کره‌ای چی میشه؟»\n• «گرامر»\n• «فرهنگ کره»\n• «اسم تو چیه؟»'
+    };
+    case 'greeting': return {
+      ko:'안녕하세요! 저는 Khatmin이에요. 만나서 반가워요! 🦊',
+      fa:'سلام! من خاطمین هستم. از آشنایی خوشحالم! «안녕하세요» = سلام.',
+      tip:'یه کلمه یاد بگیری؟ بگو «یه کلمه یادم بده» 🌟'
+    };
+    case 'translate': return handleTranslate(t);
+    default: return handleUnknown(t);
+  }
+}
+
+function handleTranslate(t){
+  let q = t.replace(/به کره‌ای|به زبان کره‌ای|به زبان کره|چی میشه|چی می‌شه|چیه|ترجمه|معنی|یعنی|چطور میگن|چطور بگم|چگونه|how to say|translate|کن|کنی|بگو|کنم|[؟?!.,،:]/g,'').trim();
+  if(!q) return { ko:'무엇을 번역해 드릴까요?', fa:'چی رو ترجمه کنم؟ مثلاً بپرس: «سلام به کره‌ای چی میشه؟»' };
+
+  const found = findInBank(q);
+  if(found) return { ko: found.ko, fa: `«${q}» به کره‌ای می‌شه «${found.ko}» (${found.ro}).`, tip:'حالا تلفظش رو گوش کن و تکرار کن! 🎧' };
+
+  const pm = PHRASE_MAP[q];
+  if(pm) return { ko: pm[0], fa: `«${q}» به کره‌ای می‌شه «${pm[0]}» (${pm[1]}).` };
+
+  for(const k in PHRASE_MAP){
+    if(q.includes(k) || k.includes(q))
+      return { ko: PHRASE_MAP[k][0], fa: `«${k}» به کره‌ای می‌شه «${PHRASE_MAP[k][0]}» (${PHRASE_MAP[k][1]}).` };
+  }
+  return { ko:'미안해요, 그 단어를 잘 몰라요.', fa: `متأسفم، «${q}» رو توی دیکشنری پیدا نکردم. یه کلمه‌ی دیگه امتحان کن، یا از فلش‌کارت‌ها یه کلمه‌ی جدید یاد بگیر.` };
+}
+
+function teachWord(){
+  const notLearned = WORDS.filter(w => !isLearned(w.ko));
+  const pool = notLearned.length > 0 ? notLearned : WORDS;
+  const w = pick(pool);
+  context.lastTopic = 'teach';
+  return {
+    ko: `${w.emoji} ${w.ko} (${w.ro}) = ${w.fa}`,
+    fa: `یه کلمه‌ی تازه از دسته‌ی «${w.cat}»:`,
+    tip: '🔊 دکمه‌ی بلندگو رو بزن تا تلفظش رو بشنوی. برای یادگیری، برو به فلش‌کارت‌ها و روی «یاد گرفتم» بزن.'
+  };
+}
+
+function startQuiz(){
+  const learned = WORDS.filter(w => isLearned(w.ko));
+  const pool = learned.length >= 3 ? learned : WORDS;
+  const w = pick(pool);
+  context.quizActive = true;
+  context.quizWord = w;
+  context.quizAttempts = 0;
+  context.quizTotal++;
+  context.lastTopic = 'quiz';
+  return {
+    ko: `퀴즈! ${w.emoji} «${w.fa}» 는 한국어로 뭐예요?`,
+    fa: `امتحان! «${w.fa}» ${w.emoji} به کره‌ای چیه؟`,
+    tip: 'راهنمایی: با «' + w.ko.charAt(0) + '» شروع می‌شه.'
+  };
+}
+
+function handleQuizAnswer(text){
+  const w = context.quizWord;
+  const userAns = normalize(text);
+  const correct = normalize(w.ko);
+
+  if(userAns === correct || isCorrectAnswer(userAns, w.ko)){
+    context.quizActive = false;
+    context.quizCorrect++;
+    celebrate();
+    return {
+      ko: `정답이에요! 🎉 완벽해요! ${w.ko} = ${w.fa}`,
+      fa: `آفرین! 🎉 درسته! «${w.ko}» (${w.ro}) = ${w.fa}`,
+      tip: `تا حالا ${context.quizCorrect} از ${context.quizTotal} رو درست جواب دادی! 💪`
+    };
+  }
+
+  context.quizAttempts++;
+  if(context.quizAttempts >= 2){
+    context.quizActive = false;
+    return {
+      ko: `아쉽네요! 정답은 ${w.ko} (${w.ro})예요.`,
+      fa: `نزدیک بود! جواب درست: «${w.ko}» (${w.ro}) = ${w.fa}`,
+      tip: 'برای امتحان بعدی بگو «امتحانم کن».'
+    };
+  }
+  return {
+    ko: `다시 생각해 보세요! 힌트: ${w.ko.charAt(0)}...`,
+    fa: `دوباره فکر کن! راهنمایی: با «${w.ko.charAt(0)}» شروع می‌شه (${w.ko.length} حرف).`
+  };
+}
+
+function handleUnknown(t){
+  const found = findInBank(t);
+  if(found) return { ko: found.ko, fa: `«${found.fa}» به کره‌ای می‌شه «${found.ko}» (${found.ro}).` };
+
+  const pm = PHRASE_MAP[t];
+  if(pm) return { ko: pm[0], fa: `«${t}» به کره‌ای می‌شه «${pm[0]}» (${pm[1]}).` };
+
+  const fallbacks = [
+    { ko:'아, 그렇군요! 조금 더 이야기해 줄래요? 😊', fa:'آه، متوجه شدم! می‌تونی بیشتر توضیح بدی؟', tip:'می‌تونی بپرسی: «یه کلمه یادم بده» یا «امتحانم کن».' },
+    { ko:'정말 흥미롭네요! 한국어를 아주 잘하고 있어요 👍', fa:'واقعاً جالبه! داری خیلی خوب کره‌ای حرف می‌زنی 👍', tip:'پیشنهاد: بپرس «سلام به کره‌ای چی میشه؟» یا «داستان».' },
+    { ko:'좋아요! 그럼 이렇게 말해 볼까요: 저는 한국어를 공부해요.', fa:'حالا این جمله رو تکرار کن: «저는 한국어를 공부해요» یعنی «من کره‌ای مطالعه می‌کنم».', tip:'«공부해요» = مطالعه می‌کنم، «한국어» = زبان کره‌ای.' }
+  ];
+  return pick(fallbacks);
+}
+
+function koreanReply(t){
+  if(/[-~]?[가-힣]*(ㅂ니다|습니다)/.test(t)) return {
+    ko:'아주 좋아요! رسمی و مؤدبانه صحبت می‌کنی! 👏',
+    fa:'عالی! داری رسمی و مؤدبانه صحبت می‌کنی! 👏',
+    tip: pick(Object.values(GRAMMAR_TIPS))
+  };
+  if(/[-~]?[가-힣]*(아요|어요|여요)/.test(t)) return {
+    ko:'좋아요! 친근하고 자연스러운 표현이에요. 😊',
+    fa:'خوبه! این یه بیان صمیمی و طبیعی‌ست. 😊',
+    tip: '«-아요/-어요» برای صحبت مؤدبانه و دوستانه است.'
+  };
+
+  if(/사랑|좋아|행복/.test(t)) return { ko:'저도 그 마음 알아요! 정말 따뜻한 말이에요. ❤️', fa:'من هم این احساس رو می‌فهمم! جمله‌ی قشنگی بود. ❤️' };
+  if(/먹|밥|김치|맛있/.test(t)) return { ko:'맛있겠다! 한국 음식 중에서 뭐가 제일 좋아요? 🍚', fa:'به نظر خوشمزه‌ست! از بین غذای کره‌ای کدوم رو بیشتر دوست داری؟ 🍚' };
+  if(/공부|배워|한국어|어려/.test(t)) return { ko:'와, 정말 멋져요! 한국어 공부는 조금 어렵지만 아주 재미있어요. 📚', fa:'واو، عالیه! درس کره‌ای کمی سخته ولی خیلی سرگرم‌کننده‌ست. 📚' };
+  if(/안녕|반가/.test(t)) return { ko:'안녕하세요! 만나서 반가워요. 저는 Khatmin이에요. 🦊', fa:'سلام! از آشنایی خوشحالم. من خاطمین هستم. 🦊' };
+  if(/고마|감사/.test(t)) return { ko:'천만에요! 😊', fa:'خواهش می‌کنم! 😊' };
+  if(/이름/.test(t)) return { ko:'제 이름은 Khatmin이에요. 이름이 뭐예요?', fa:'اسم من خاطمینه. اسم تو چیه؟ («이름이 뭐예요?» = اسمت چیه؟)' };
+
+  return {
+    ko:'아, 정말요? 한국어를 아주 잘하고 있어요! 계속 연습하세요. 💪',
+    fa:'واقعاً؟ داری خیلی خوب کره‌ای حرف می‌زنی! ادامه بده. 💪',
+    tip:'نکته: می‌تونی از من بپرسی «گرامر»، «فرهنگ کره»، یا «یه کلمه یادم بده».'
+  };
+}
+
+/* =========================================================
+   ۱۱) چت UI
+   ========================================================= */
+const chatBody = $('#chatBody');
+
+function addMessage(role, ko, fa, tip){
+  const msg = document.createElement('div');
+  msg.className = 'msg ' + role;
+
+  const avatar = document.createElement('div');
+  avatar.className = 'm-avatar';
+  avatar.textContent = role === 'ai' ? '🦊' : '🙂';
+
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+
+  const koEl = document.createElement('div');
+  koEl.className = 'ko';
+  koEl.dir = 'ltr';
+  koEl.textContent = ko;
+  bubble.appendChild(koEl);
+
+  if(fa){
+    const faEl = document.createElement('div');
+    faEl.className = 'fa';
+    faEl.textContent = fa;
+    bubble.appendChild(faEl);
+  }
+  if(tip){
+    const tipEl = document.createElement('div');
+    tipEl.className = 'tip';
+    tipEl.textContent = tip;
+    bubble.appendChild(tipEl);
+  }
+  if(role === 'ai'){
+    const sp = document.createElement('button');
+    sp.className = 'speak-inline';
+    sp.textContent = '🔊';
+    sp.title = 'پخش تلفظ';
+    sp.addEventListener('click', () => speak(ko));
+    bubble.appendChild(sp);
+  }
+
+  msg.appendChild(avatar);
+  msg.appendChild(bubble);
+  chatBody.appendChild(msg);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function showTyping(){
+  const el = document.createElement('div');
+  el.className = 'msg ai';
+  el.id = 'typingMsg';
+  el.innerHTML = `<div class="m-avatar">🦊</div><div class="bubble"><div class="typing"><i></i><i></i><i></i></div></div>`;
+  chatBody.appendChild(el);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+function hideTyping(){ const el = $('#typingMsg'); if(el) el.remove(); }
+
+function sendToKhatmin(text){
+  if(!text.trim()) return;
+  context.totalMsgs++;
+  addMessage('me', text);
+  showTyping();
+  const delay = 650 + Math.random() * 550;
+  setTimeout(() => {
+    hideTyping();
+    const r = khatminReply(text);
+    addMessage('ai', r.ko, r.fa, r.tip);
+    speak(r.ko);
+  }, delay);
+}
+
+const SUGGESTIONS = [
+  '안녕하세요!',
+  'یه کلمه یادم بده',
+  'امتحانم کن',
+  'داستان',
+  'سلام به کره‌ای چی میشه؟',
+  'گرامر',
+  'فرهنگ کره',
+  'اسم تو چیه؟'
+];
+
+function renderSuggestions(){
+  const box = $('#chatSuggest');
+  box.innerHTML = '';
+  SUGGESTIONS.forEach(s => {
+    const c = document.createElement('button');
+    c.type = 'button';
+    c.className = 'chip';
+    c.textContent = s;
+    c.addEventListener('click', () => sendToKhatmin(s));
+    box.appendChild(c);
+  });
+}
+
+/* =========================================================
+   ۱۲) ورودی صوتی
+   ========================================================= */
+let recognition = null;
+let isRecording = false;
+function initSpeechRecognition(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR) return null;
+  const rec = new SR();
+  rec.lang = 'ko-KR';
+  rec.interimResults = false;
+  rec.maxAlternatives = 1;
+  rec.onstart = () => { isRecording = true; $('#micBtn').classList.add('rec'); };
+  rec.onend = () => { isRecording = false; $('#micBtn').classList.remove('rec'); };
+  rec.onerror = () => { isRecording = false; $('#micBtn').classList.remove('rec'); };
+  rec.onresult = e => {
+    const tr = e.results[0][0].transcript;
+    $('#chatText').value = tr;
+    setTimeout(() => sendToKhatmin(tr), 250);
+  };
+  return rec;
+}
+
+/* =========================================================
+   ۱۳) ناوبری
+   ========================================================= */
+function switchView(name){
+  $$('.view').forEach(v => v.hidden = true);
+  const t = $('#view-' + name);
+  if(t) t.hidden = false;
+  $$('.tab').forEach(b => b.classList.toggle('active', b.dataset.view === name));
+  if(name === 'chat'){
+    setTimeout(() => { chatBody.scrollTop = chatBody.scrollHeight; $('#chatText').focus(); }, 150);
+  }
+  if(name === 'saved') renderSaved();
+}
+
+/* =========================================================
+   ۱۴) راه‌اندازی
+   ========================================================= */
+function init(){
+  loadState();
+  buildKeyboard();
+  renderSuggestions();
+  renderCard();
+  renderSaved();
+
+  $('#nextCard').addEventListener('click', nextCard);
+  $('#prevCard').addEventListener('click', prevCard);
+
+  $('#speakBtn').addEventListener('click', () => {
+    const deck = getDeck();
+    const w = deck[cardIndex];
+    if(w) speak(w.ko, $('#cardMedia'), w.ro);
+  });
+  $('#cardMedia').addEventListener('click', () => {
+    const deck = getDeck();
+    const w = deck[cardIndex];
+    if(w) speak(w.ko, $('#cardMedia'), w.ro);
+  });
+
+  $('#saveBtn').addEventListener('click', () => {
+    const deck = getDeck();
+    const w = deck[cardIndex];
+    if(w) openNotebook(w);
+  });
+
+  $('#nextDayBtn').addEventListener('click', () => {
+    if(state.currentDay < DAYS.length){
+      state.currentDay += 1;
+      state.lastDate = todayStr();
+      saveState();
+      cardIndex = 0;
+      renderCard();
+      renderSaved();
+      toast('🎉 وارد روز ' + faNum(state.currentDay) + ' شدی!');
+    }
+  });
+
+  $('#resetBtn').addEventListener('click', () => {
+    if(confirm('همه‌ی پیشرفت پاک بشه و از اول شروع کنی؟')){
+      localStorage.removeItem(STORE_KEY);
+      state = { currentDay: 1, learned: [], lastDate: todayStr() };
+      saveState();
+      cardIndex = 0;
+      renderCard();
+      renderSaved();
+      toast('✨ همه چیز از نو!');
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if(!$('#nbOverlay').hidden) return;
+    if($('#view-cards').hidden) return;
+    if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if(e.key === 'ArrowLeft')  nextCard();
+    if(e.key === 'ArrowRight') prevCard();
+  });
+
+  $$('.tab').forEach(t => t.addEventListener('click', () => switchView(t.dataset.view)));
+
+  $('#searchInput').addEventListener('input', e => {
+    searchQuery = e.target.value.trim();
+    renderSaved();
+  });
+
+  $('#nbClose').addEventListener('click', closeNotebook);
+  $('#nbCancel').addEventListener('click', closeNotebook);
+  $('#nbSubmit').addEventListener('click', submitNotebook);
+  $('#nbHint').addEventListener('click', () => {
+    if(!nbWord) return;
+    $('#nbMsg').textContent = '💡 راهنمایی: ' + nbWord.ko + ' (فقط ببین)';
+    $('#nbMsg').className = 'nb-msg';
+    setTimeout(() => { if($('#nbMsg').textContent.includes('راهنمایی')) $('#nbMsg').textContent = ''; }, 2500);
+  });
+  $('#nbOverlay').addEventListener('click', e => { if(e.target.id === 'nbOverlay') closeNotebook(); });
+  $('#nbInput').addEventListener('keydown', e => { if(e.key === 'Enter') submitNotebook(); });
+  $('#nbKbToggle').addEventListener('click', () => {
+    const kb = $('#nbKb');
+    kb.hidden = !kb.hidden;
+    $('#nbKbToggle').textContent = kb.hidden ? '⌨️ نمایش کیبورد کره‌ای' : '⌨️ بستن کیبورد';
+    if(!kb.hidden){
+      $('#nbInput').setAttribute('readonly', 'readonly');
+      syncInput();
+    }else{
+      $('#nbInput').removeAttribute('readonly');
+    }
+  });
+  $('#nbInput').addEventListener('input', () => {
+    if(!$('#nbKb').hidden && !jamoMode){
+      committed = $('#nbInput').value;
+      comp = {cho:'', jung:'', jong:''};
+    }
+  });
+
+  /* پیام خوش‌آمدگویی چت */
+  addMessage(
+    'ai',
+    '안녕하세요! 저는 인공지능 Khatmin이에요.',
+    'سلام! من هوش مصنوعی خاطمین هستم. 🌟'
+  );
+
+  $('#chatForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const input = $('#chatText');
+    const v = input.value.trim();
+    if(!v) return;
+    input.value = '';
+    sendToKhatmin(v);
+  });
+
+  recognition = initSpeechRecognition();
+  $('#micBtn').addEventListener('click', () => {
+    if(!recognition){
+      toast('مرورگرت از ضبط صدا پشتیبانی نمی‌کند. از Chrome استفاده کن 🎤', true);
+      return;
+    }
+    if(isRecording){ recognition.stop(); return; }
+    try{ recognition.start(); }catch(e){ recognition.stop(); }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
